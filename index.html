@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Downloads Pro</title>
+    <!-- Ícones (Phosphor Icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Fonte Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-body: #09090b;       /* Preto quase absoluto */
+            --bg-sidebar: #121214;    /* Cinza muito escuro */
+            --bg-card: #1c1c1f;       /* Cinza cartão */
+            --accent: #8257e6;        /* Roxo Neon (Rocketseat style) */
+            --accent-hover: #996dff;
+            --text-main: #e1e1e6;
+            --text-muted: #a8a8b3;
+            --border: #29292e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        body { background-color: var(--bg-body); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; }
+        a { text-decoration: none; }
+
+        /* --- SIDEBAR (MENU LATERAL) --- */
+        .sidebar {
+            width: 280px;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            transition: transform 0.3s ease;
+            z-index: 100;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 30px; display: flex; align-items: center; gap: 10px; }
+        .logo span { color: var(--accent); }
+
+        .menu-item { list-style: none; margin-bottom: 5px; }
+        
+        .menu-btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .menu-btn:hover, .menu-btn.active { background-color: var(--border); color: var(--text-main); }
+        .menu-btn i { font-size: 1.2rem; margin-right: 10px; }
+
+        /* Submenus (Aquele efeito de abrir gaveta) */
+        .submenu { 
+            display: none; 
+            padding-left: 20px; 
+            margin-top: 5px; 
+            border-left: 2px solid var(--border);
+            margin-left: 15px;
+        }
+        .submenu.open { display: block; animation: slideDown 0.3s ease; }
+        
+        .submenu-link {
+            display: block;
+            padding: 10px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .submenu-link:hover { color: var(--accent); }
+
+        /* --- ÁREA PRINCIPAL --- */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        /* Botão Menu Mobile */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            z-index: 200;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(130, 87, 230, 0.4);
+        }
+
+        /* --- CONTEÚDO DAS PÁGINAS --- */
+        .page { display: none; animation: fadeIn 0.4s; }
+        .page.active { display: block; }
+
+        h1 { font-size: 2rem; margin-bottom: 10px; }
+        .subtitle { color: var(--text-muted); margin-bottom: 30px; }
+
+        /* CARDS DE DOWNLOAD (A parte bonita) */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .download-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .download-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+
+        .card-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .card-icon { 
+            width: 50px; height: 50px; 
+            background: rgba(130, 87, 230, 0.1); 
+            color: var(--accent); 
+            border-radius: 10px; 
+            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+        }
+
+        .card-title h3 { font-size: 1.1rem; }
+        .card-tag { 
+            font-size: 0.75rem; 
+            background: #29292e; 
+            padding: 2px 8px; 
+            border-radius: 4px; 
+            color: var(--text-muted); 
+            margin-top: 5px; display: inline-block;
+        }
+        
+        .tag-32 { color: #facc15; background: rgba(250, 204, 21, 0.1); }
+        .tag-64 { color: #22c55e; background: rgba(34, 197, 94, 0.1); }
+
+        .btn-download {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--accent);
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.2s;
+        }
+
+        .btn-download:hover { background-color: var(--accent-hover); }
+
+        /* Responsividade Mobile */
+        @media (max-width: 768px) {
+            .sidebar { position: fixed; height: 100%; transform: translateX(-100%); width: 80%; box-shadow: 10px 0 20px rgba(0,0,0,0.5); }
+            .sidebar.active { transform: translateX(0); }
+            .mobile-toggle { display: block; }
+            .main-content { padding: 80px 20px 20px 20px; }
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <!-- Botão Mobile -->
+    <button class="mobile-toggle" onclick="toggleSidebar()">
+        <i class="ph ph-list" style="font-size: 1.5rem;"></i>
+    </button>
+
+    <!-- MENU LATERAL -->
+    <nav class="sidebar" id="sidebar">
+        <div class="logo">
+            <i class="ph ph-cube-transparent"></i>
+            <div>Meu<span>Site</span></div>
+        </div>
+
+        <ul>
+            <li class="menu-item">
+                <button class="menu-btn active" onclick="showPage('home')">
+                    <div><i class="ph ph-house"></i> Início</div>
+                </button>
+            </li>
+            
+            <li class="menu-item">
+                <button class="menu-btn" onclick="toggleSubmenu('menu-roblox')">
+                    <div><i class="ph ph-robot"></i> Roblox Apk's</div>
+                    <i class="ph ph-caret-down"></i>
+                </button>
+                <!-- SUBMENU ROBLOX -->
+                <div class="submenu" id="menu-roblox">
+                    <span class="submenu-link" onclick="showPage('fflags-info')">O que são FFlags?</span>
+                    <span class="submenu-link" onclick="showPage('roblox-fflags')">Roblox com FFlags</span>
+                    <span class="submenu-link" onclick="showPage('roblox-normal')">Roblox Normais</span>
+                </div>
+            </li>
+
+            <li class="menu-item">
+                <button class="menu-btn" onclick="showPage('configs')">
+                    <div><i class="ph ph-gear"></i> Configurações</div>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+        
+        <!-- PÁGINA 1: INÍCIO -->
+        <div id="home" class="page active">
+            <h1>Bem-vindo! 👋</h1>
+            <p class="subtitle">Selecione uma categoria no menu lateral para começar.</p>
+            
+            <div class="download-card" style="border-color: var(--accent);">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ph ph-star"></i></div>
+                    <div class="card-title">
+                        <h3>Última Atualização</h3>
+                        <p style="color: #888; font-size: 0.9rem;">Versão v2.59 adicionada hoje.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 2: O QUE SÃO FFLAGS -->
+        <div id="fflags-info" class="page">
+            <h1>O que são FFlags?</h1>
+            <p class="subtitle">Entenda como funcionam as Fast Flags.</p>
+            <div class="download-card">
+                <p style="line-height: 1.6;">FFlags (Fast Flags) são configurações internas do Roblox que permitem ativar ou desativar funcionalidades de renderização, física e rede. Com nossos APKs modificados, você pode alterar essas flags para ganhar performance ou vantagens.</p>
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: ROBLOX COM FFLAGS -->
+        <div id="roblox-fflags" class="page">
+            <h1>Roblox com FFlags</h1>
+            <p class="subtitle">Versões modificadas (32 & 64 Bits)</p>
+            
+            <div class="card-grid">
+                <!-- ITEM 1 -->
+                <div class="download-card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="ph ph-android-logo"></i></div>
+                        <div class="card-title">
+                            <h3>1Drxker Version</h3>
+                            <span class="card-tag tag-64">64 Bits</span>
+                            <span class="card-tag">Passos Estourados</span>
+                        </div>
+                    </div>
+                    <!-- LINK MEDIAFIRE AQUI -->
+                    <a href="LINK_MEDIAFIRE_AQUI" target="_blank" class="btn-download">Baixar APK</a>
+                </div>
+
+                <!-- ITEM 2 -->
+                <div class="download-card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="ph ph-lightning"></i></div>
+                        <div class="card-title">
+                            <h3>Michawell Version SS</h3>
+                            <span class="card-tag tag-32">32 Bits</span>
+                            <span class="card-tag">Lite</span>
+                        </div>
+                    </div>
+                    <!-- LINK MEDIAFIRE AQUI -->
+                    <a href="LINK_MEDIAFIRE_AQUI" target="_blank" class="btn-download">Baixar APK</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 4: ROBLOX NORMAIS -->
+        <div id="roblox-normal" class="page">
+            <h1>Roblox Normais</h1>
+            <p class="subtitle">Versões originais da Play Store (Backups)</p>
+            
+            <div class="download-card">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ph ph-google-play-logo"></i></div>
+                    <div class="card-title">
+                        <h3>Roblox Original v2.60</h3>
+                        <span class="card-tag">Original</span>
+                    </div>
+                </div>
+                <a href="#" class="btn-download">Baixar Original</a>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Lógica para alternar as abas
+        function showPage(pageId) {
+            // Esconde todas as páginas
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            // Mostra a página certa
+            document.getElementById(pageId).classList.add('active');
+            
+            // Fecha menu mobile se estiver aberto
+            if(window.innerWidth <= 768) toggleSidebar();
+        }
+
+        // Lógica do submenu (Acordeão)
+        function toggleSubmenu(id) {
+            const submenu = document.getElementById(id);
+            submenu.classList.toggle('open');
+        }
+
+        // Lógica do menu mobile
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+          </html>

@@ -15,7 +15,7 @@
             --secondary: #06b6d4;
             --danger: #ef4444;
             --success: #10b981;
-            --danger-glow: rgba(239, 68, 68, 0.15);
+            --discord: #5865F2; /* Cor oficial Discord */
             --text-main: #ffffff;
             --text-muted: #9ca3af;
             --border: rgba(255, 255, 255, 0.08);
@@ -72,7 +72,6 @@
             display: flex; flex-direction: column; justify-content: flex-end;
             overflow: hidden;
         }
-
         .hero-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXZ5Ynd3anF4bnJ4NnJ4eXJ4bnJ4bnJ4bnJ4bnJ4bnJ4bnJ4bnJ4YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/U3qYN8S0j3bpK/giphy.gif'); 
@@ -94,54 +93,55 @@
         .highlight { color: var(--secondary); }
         .channel-info { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-top: 12px; font-weight: 500; }
 
-        /* --- ALERTA BANIMENTO (DIVIDIDO) --- */
+        /* --- ALERTA BANIMENTO --- */
         .danger-box {
             background: linear-gradient(145deg, rgba(239, 68, 68, 0.05), rgba(0,0,0,0));
             border: 1px solid var(--danger); border-left: 4px solid var(--danger);
-            border-radius: 12px; padding: 25px;
-            margin-top: 30px; margin-bottom: 30px;
-            box-shadow: 0 0 25px var(--danger-glow);
+            border-radius: 12px; padding: 25px; margin-top: 30px; margin-bottom: 30px;
+            box-shadow: 0 0 25px rgba(239, 68, 68, 0.15);
         }
         .danger-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
         .danger-title { color: var(--danger); font-size: 1.2rem; font-weight: 700; }
-        
         .ban-status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
         .status-item { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; border: 1px solid var(--border); }
-        
         .st-title { font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 5px; }
         .st-val { font-size: 1rem; font-weight: 700; }
-        
         .risk-high { color: var(--danger); }
         .risk-safe { color: var(--success); }
-
         .danger-text { color: #ffcece; font-size: 0.9rem; line-height: 1.6; margin-top: 15px; border-top: 1px solid rgba(239,68,68,0.3); padding-top: 15px; }
 
-        /* --- INFO GERAL --- */
-        .main-info-box {
-            background: var(--bg-panel); border: 1px solid var(--border);
-            padding: 20px; border-radius: 12px; margin-bottom: 30px;
-        }
+        /* --- INFO GERAL / SUPORTE --- */
+        .main-info-box { background: var(--bg-panel); border: 1px solid var(--border); padding: 20px; border-radius: 12px; margin-bottom: 30px; }
         .main-info-title { color: var(--secondary); font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;}
         .main-info-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
 
-        /* --- ESPECIFICAÇÕES (ANTIGA LEGENDA - AGORA EM DESTAQUE) --- */
+        /* Lista de Report */
+        .report-list { list-style: none; margin-top: 15px; }
+        .report-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: var(--text-muted); font-size: 0.9rem; }
+        .report-item i { color: var(--discord); }
+
+        /* Botão Discord */
+        .discord-btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            background-color: var(--discord); color: white;
+            padding: 15px; border-radius: 8px; font-weight: 700;
+            margin-top: 20px; transition: 0.2s; border: 1px solid transparent;
+        }
+        .discord-btn:hover { background-color: #4752c4; transform: translateY(-2px); }
+
+        /* Dica Suporte */
+        .support-tip { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; border: 1px solid var(--border); margin-top: 20px; }
+        .tip-header { font-size: 0.9rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+
+        /* --- ESPECIFICAÇÕES --- */
         .specs-section { margin-top: 40px; }
         .specs-header { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 15px; border-left: 3px solid var(--primary); padding-left: 10px; }
-        
         .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        
-        .spec-card {
-            background: rgba(255,255,255,0.03); border: 1px solid var(--border);
-            padding: 20px; border-radius: 10px; position: relative; overflow: hidden;
-            transition: transform 0.2s;
-        }
+        .spec-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 20px; border-radius: 10px; transition: transform 0.2s; }
         .spec-card:hover { transform: translateY(-3px); border-color: var(--primary); }
-        
         .spec-code { font-size: 2rem; font-weight: 900; line-height: 1; margin-bottom: 5px; }
         .spec-detail { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; display: flex; flex-direction: column; gap: 2px; }
         .spec-detail span { display: flex; align-items: center; gap: 6px; }
-
-        /* Cores Neon para as specs */
         .cc-glow { color: #a78bfa; text-shadow: 0 0 15px rgba(167, 139, 250, 0.3); }
         .ss-glow { color: #60a5fa; text-shadow: 0 0 15px rgba(96, 165, 250, 0.3); }
         .sc-glow { color: #34d399; text-shadow: 0 0 15px rgba(52, 211, 153, 0.3); }
@@ -155,7 +155,7 @@
             .mobile-toggle { display: block; }
             h1 { font-size: 1.9rem; }
             .hero-banner { padding: 40px 20px 30px 20px; }
-            .ban-status-grid { grid-template-columns: 1fr; } /* Um embaixo do outro no celular */
+            .ban-status-grid { grid-template-columns: 1fr; }
         }
 
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
@@ -173,6 +173,9 @@
         <div class="logo">1Drxker <span style="font-size:0.8rem; font-weight:400; color:#666; display:block;">Central</span></div>
         
         <button class="menu-btn active" onclick="showPage('main')"><div><i class="ph ph-house-line"></i> Main</div></button>
+        
+        <!-- NOVO BOTÃO SUPORTE -->
+        <button class="menu-btn" onclick="showPage('support')"><div><i class="ph ph-bug-beetle"></i> Relatar Bugs/Support</div></button>
         
         <button class="menu-btn" onclick="toggleSubmenu('menu-apk')">
             <div><i class="ph ph-game-controller"></i> Roblox APK's</div><i class="ph ph-caret-down"></i>
@@ -198,34 +201,27 @@
             </div>
 
             <div class="content-container">
-                <!-- Caixa de Aviso de Banimento (Reestruturada) -->
                 <div class="danger-box">
                     <div class="danger-header">
                         <i class="ph ph-warning-octagon" style="font-size: 1.5rem; color: var(--danger);"></i>
                         <div class="danger-title">Status de Banimento</div>
                     </div>
-
-                    <!-- Grid de Comparação -->
                     <div class="ban-status-grid">
                         <div class="status-item" style="border-left: 3px solid var(--danger);">
-                            <div class="st-title">Flee the Facility</div>
-                            <div class="st-val risk-high">POSSÍVEL ⚠️</div>
+                            <div class="st-title">Flee the Facility</div><div class="st-val risk-high">POSSÍVEL ⚠️</div>
                             <div style="font-size: 0.75rem; color: #777; margin-top: 5px;">Via Report Manual</div>
                         </div>
                         <div class="status-item" style="border-left: 3px solid var(--success);">
-                            <div class="st-title">Conta Roblox (Plataforma)</div>
-                            <div class="st-val risk-safe">SEGURO ✅</div>
+                            <div class="st-title">Conta Roblox (Plataforma)</div><div class="st-val risk-safe">SEGURO ✅</div>
                             <div style="font-size: 0.75rem; color: #777; margin-top: 5px;">Client-Side Indetectável</div>
                         </div>
                     </div>
-
                     <p class="danger-text">
                         <strong>Atenção:</strong> Você <strong>não</strong> será banido do Roblox (perder a conta), apenas banido do jogo <em>Flee the Facility</em> se for pego.<br><br>
                         🚫 <strong>Prevenção:</strong> Não grave vídeos nem tire prints mostrando a interface modificada. Isso anula 99% das chances de report.
                     </p>
                 </div>
 
-                <!-- Info Box (Texto Original) -->
                 <div class="main-info-box">
                     <div class="main-info-title"><i class="ph ph-info"></i> Utilidade do Patch</div>
                     <p class="main-info-text">
@@ -233,54 +229,57 @@
                     </p>
                 </div>
 
-                <!-- ESPECIFICAÇÕES (ANTIGA LEGENDA) - AGORA BEM VISÍVEL -->
                 <div class="specs-section">
                     <div class="specs-header">ESPECIFICAÇÕES DE MÓDULOS</div>
-                    
                     <div class="specs-grid">
-                        <!-- CC -->
-                        <div class="spec-card">
-                            <div class="spec-code cc-glow">CC</div>
-                            <div class="spec-detail">
-                                <span><i class="ph ph-check" style="color:var(--success)"></i> Com Neblina</span>
-                                <span><i class="ph ph-check" style="color:var(--success)"></i> Com Skin</span>
-                            </div>
-                        </div>
-                        
-                        <!-- SS -->
-                        <div class="spec-card">
-                            <div class="spec-code ss-glow">SS</div>
-                            <div class="spec-detail">
-                                <span><i class="ph ph-x" style="color:var(--danger)"></i> Sem Neblina</span>
-                                <span><i class="ph ph-x" style="color:var(--danger)"></i> Sem Skin</span>
-                            </div>
-                        </div>
-
-                        <!-- SC -->
-                        <div class="spec-card">
-                            <div class="spec-code sc-glow">SC</div>
-                            <div class="spec-detail">
-                                <span><i class="ph ph-x" style="color:var(--danger)"></i> Sem Neblina</span>
-                                <span><i class="ph ph-check" style="color:var(--success)"></i> Com Skin</span>
-                            </div>
-                        </div>
-
-                        <!-- CS -->
-                        <div class="spec-card">
-                            <div class="spec-code cs-glow">CS</div>
-                            <div class="spec-detail">
-                                <span><i class="ph ph-check" style="color:var(--success)"></i> Com Neblina</span>
-                                <span><i class="ph ph-x" style="color:var(--danger)"></i> Sem Skin</span>
-                            </div>
-                        </div>
+                        <div class="spec-card"><div class="spec-code cc-glow">CC</div><div class="spec-detail"><span><i class="ph ph-check" style="color:var(--success)"></i> Com Neblina</span><span><i class="ph ph-check" style="color:var(--success)"></i> Com Skin</span></div></div>
+                        <div class="spec-card"><div class="spec-code ss-glow">SS</div><div class="spec-detail"><span><i class="ph ph-x" style="color:var(--danger)"></i> Sem Neblina</span><span><i class="ph ph-x" style="color:var(--danger)"></i> Sem Skin</span></div></div>
+                        <div class="spec-card"><div class="spec-code sc-glow">SC</div><div class="spec-detail"><span><i class="ph ph-x" style="color:var(--danger)"></i> Sem Neblina</span><span><i class="ph ph-check" style="color:var(--success)"></i> Com Skin</span></div></div>
+                        <div class="spec-card"><div class="spec-code cs-glow">CS</div><div class="spec-detail"><span><i class="ph ph-check" style="color:var(--success)"></i> Com Neblina</span><span><i class="ph ph-x" style="color:var(--danger)"></i> Sem Skin</span></div></div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- Rodapé de info técnica (Nerdola) -->
-                <div style="margin-top: 30px; border-top: 1px solid var(--border); padding-top: 15px; color: var(--text-muted); font-size: 0.8rem; font-family: monospace;">
-                    ARCHITECTURE: ARM64-v8a / ARMEABI-v7a<br>
-                    RENDER PIPELINE: OPENGL ES 3.0<br>
-                    PATCH INTEGRITY: UNVERIFIED (USE AT OWN RISK)
+        <!-- === NOVA PÁGINA: SUPORTE / BUGS === -->
+        <div id="support" class="page">
+            <div class="hero-banner" style="padding-bottom: 20px;">
+                <h1 style="font-size: 1.8rem;">SUPORTE / <span class="highlight">BUGS</span></h1>
+                <p style="color: var(--text-muted);">Central de ajuda e report de problemas</p>
+            </div>
+            
+            <div class="content-container" style="padding-top: 20px;">
+                
+                <div class="main-info-box">
+                    <p class="main-info-text">
+                        Caso algo não funcione corretamente — como links que não abrem, falhas no carregamento ou problemas com o app — você pode entrar em contato para relatar.
+                    </p>
+                    
+                    <div style="margin-top: 20px; font-weight: 700; color: var(--text-main);">Exemplos do que pode ser reportado:</div>
+                    <ul class="report-list">
+                        <li class="report-item"><i class="ph ph-warning-circle"></i> Problemas com o Roblox modificado</li>
+                        <li class="report-item"><i class="ph ph-warning-circle"></i> Erros nos links ou no site</li>
+                        <li class="report-item"><i class="ph ph-warning-circle"></i> Travamentos ou instabilidade</li>
+                        <li class="report-item"><i class="ph ph-warning-circle"></i> Problema na instalação</li>
+                    </ul>
+
+                    <!-- Botão Discord -->
+                    <div style="margin-top: 30px;">
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">Meio de Contato:</span>
+                        <a href="https://discord.gg/yeGbxBM69Y" target="_blank" class="discord-btn">
+                            <i class="ph ph-discord-logo" style="font-size: 1.5rem;"></i>
+                            Servidor do Discord
+                        </a>
+                    </div>
+
+                    <!-- Dica -->
+                    <div class="support-tip">
+                        <div class="tip-header"><i class="ph ph-lightning" style="color: var(--secondary)"></i> Para agilizar o suporte:</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); padding-left: 22px;">
+                            • Envie uma imagem ou print do problema.<br>
+                            • Informe seu dispositivo (modelo e versão do Android).
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -296,6 +295,11 @@
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
+            
+            // Remove active de todos e adiciona no atual (Visual do menu)
+            document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
+            
+            // Lógica simples para destacar botão (pode ser refinada com IDs)
             if(window.innerWidth <= 768) document.getElementById('sidebar').classList.remove('active');
         }
         function toggleSubmenu(id) { document.getElementById(id).classList.toggle('open'); }

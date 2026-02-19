@@ -16,6 +16,7 @@
             --danger: #ef4444;
             --success: #10b981;
             --discord: #5865F2;
+            --playstore: #00A173; /* Verde PlayStore */
             --text-main: #ffffff;
             --text-muted: #9ca3af;
             --border: rgba(255, 255, 255, 0.08);
@@ -24,104 +25,41 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
         
-        body { 
-            background-color: var(--bg-dark); 
-            color: var(--text-main); 
-            display: flex; height: 100vh; overflow: hidden;
-        }
-
+        body { background-color: var(--bg-dark); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; }
         a { text-decoration: none; color: inherit; }
 
-        /* --- SIDEBAR --- */
-        .sidebar {
-            width: 260px; background: #0a0a0a; border-right: 1px solid var(--border);
-            display: flex; flex-direction: column; padding: 20px; z-index: 100;
-            transition: transform 0.3s ease;
-        }
-
-        .logo { 
-            font-size: 1.4rem; font-weight: 800; margin-bottom: 30px; 
-            background: linear-gradient(to right, #fff, var(--text-muted));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-
-        /* Botões do Menu */
-        .menu-btn {
-            width: 100%; padding: 12px; border-radius: 8px; background: transparent;
-            border: 1px solid transparent; color: var(--text-muted); text-align: left;
-            cursor: pointer; display: flex; align-items: center; justify-content: space-between;
-            font-size: 0.95rem; font-weight: 500; margin-bottom: 5px; transition: 0.2s;
-        }
-
-        .menu-btn:hover { background: rgba(255,255,255,0.03); color: var(--text-main); border-color: var(--border); }
+        /* SIDEBAR */
+        .sidebar { width: 260px; background: #0a0a0a; border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 20px; z-index: 100; transition: transform 0.3s ease; }
+        .logo { font-size: 1.4rem; font-weight: 800; margin-bottom: 30px; background: linear-gradient(to right, #fff, var(--text-muted)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* Estado ATIVO (Onde estou) para botões principais */
-        .menu-btn.active { 
-            background: rgba(139, 92, 246, 0.1); 
-            color: var(--primary); 
-            border-left: 3px solid var(--primary);
-            border-color: rgba(139, 92, 246, 0.2);
-        }
+        .menu-btn { width: 100%; padding: 12px; border-radius: 8px; background: transparent; border: 1px solid transparent; color: var(--text-muted); text-align: left; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-size: 0.95rem; font-weight: 500; margin-bottom: 5px; transition: 0.2s; }
+        .menu-btn:hover { background: rgba(255,255,255,0.03); color: var(--text-main); border-color: var(--border); }
+        .menu-btn.active { background: rgba(139, 92, 246, 0.1); color: var(--primary); border-left: 3px solid var(--primary); border-color: rgba(139, 92, 246, 0.2); }
 
-        /* Submenus */
         .submenu { display: none; margin-left: 10px; padding-left: 15px; border-left: 1px solid var(--border); margin-top: 5px; margin-bottom: 10px; }
         .submenu.open { display: block; animation: slideIn 0.3s; }
-        
-        .submenu-link { 
-            display: flex; align-items: center; gap: 8px;
-            padding: 8px 10px; color: var(--text-muted); font-size: 0.85rem; 
-            cursor: pointer; border-radius: 6px; transition: 0.2s; margin-bottom: 2px;
-        }
-        
+        .submenu-link { display: flex; align-items: center; gap: 8px; padding: 8px 10px; color: var(--text-muted); font-size: 0.85rem; cursor: pointer; border-radius: 6px; transition: 0.2s; margin-bottom: 2px; }
         .submenu-link:hover { color: var(--text-main); background: rgba(255,255,255,0.03); }
-        
-        /* Estado ATIVO (Onde estou) para links do submenu */
-        .submenu-link.active { 
-            color: var(--primary); 
-            background: rgba(139, 92, 246, 0.1); 
-            font-weight: 600;
-        }
+        .submenu-link.active { color: var(--primary); background: rgba(139, 92, 246, 0.1); font-weight: 600; }
 
-        /* --- CONTEÚDO PRINCIPAL --- */
+        /* CONTENT */
         .main-content { flex: 1; padding: 0; overflow-y: auto; position: relative; }
         .content-container { max-width: 850px; margin: 0 auto; padding: 0 25px 40px 25px; }
 
-        /* --- BANNER --- */
-        .hero-banner {
-            position: relative; width: 100%;
-            padding: 50px 25px 40px 25px; 
-            border-bottom: 1px solid var(--border);
-            display: flex; flex-direction: column; justify-content: flex-end;
-            overflow: hidden;
-        }
-        .hero-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXZ5Ynd3anF4bnJ4NnJ4eXJ4bnJ4bnJ4bnJ4bnJ4bnJ4bnJ4bnJ4YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/U3qYN8S0j3bpK/giphy.gif'); 
-            background-size: cover; background-position: center;
-            opacity: 0.25; z-index: 0; filter: grayscale(100%) contrast(1.2);
-        }
+        /* HERO BANNER */
+        .hero-banner { position: relative; width: 100%; padding: 50px 25px 40px 25px; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXZ5Ynd3anF4bnJ4NnJ4eXJ4bnJ4bnJ4bnJ4bnJ4bnJ4bnJ4bnJ4YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/U3qYN8S0j3bpK/giphy.gif'); background-size: cover; background-position: center; opacity: 0.25; z-index: 0; filter: grayscale(100%) contrast(1.2); }
         .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, var(--bg-dark), transparent 90%); z-index: 1; }
         .hero-text { position: relative; z-index: 2; width: 100%; padding-top: 20px; }
 
-        .status-badge {
-            display: inline-flex; align-items: center; gap: 6px;
-            background: rgba(245, 158, 11, 0.1); color: #fbbf24;
-            padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700;
-            border: 1px solid rgba(245, 158, 11, 0.25); margin-bottom: 15px;
-        }
+        .status-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(245, 158, 11, 0.1); color: #fbbf24; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(245, 158, 11, 0.25); margin-bottom: 15px; }
         .pulse-dot { width: 6px; height: 6px; background: #fbbf24; border-radius: 50%; animation: pulse 2s infinite; }
-
         h1 { font-size: 2.2rem; line-height: 1; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; text-shadow: 0 4px 20px rgba(0,0,0,0.8); }
         .highlight { color: var(--secondary); }
         .channel-info { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-top: 12px; font-weight: 500; }
 
-        /* --- ALERTA BANIMENTO --- */
-        .danger-box {
-            background: linear-gradient(145deg, rgba(239, 68, 68, 0.05), rgba(0,0,0,0));
-            border: 1px solid var(--danger); border-left: 4px solid var(--danger);
-            border-radius: 12px; padding: 25px; margin-top: 30px; margin-bottom: 30px;
-            box-shadow: 0 0 25px rgba(239, 68, 68, 0.15);
-        }
+        /* ELEMENTS */
+        .danger-box { background: linear-gradient(145deg, rgba(239, 68, 68, 0.05), rgba(0,0,0,0)); border: 1px solid var(--danger); border-left: 4px solid var(--danger); border-radius: 12px; padding: 25px; margin-top: 30px; margin-bottom: 30px; box-shadow: 0 0 25px rgba(239, 68, 68, 0.15); }
         .danger-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
         .danger-title { color: var(--danger); font-size: 1.2rem; font-weight: 700; }
         .ban-status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
@@ -132,10 +70,10 @@
         .risk-safe { color: var(--success); }
         .danger-text { color: #ffcece; font-size: 0.9rem; line-height: 1.6; margin-top: 15px; border-top: 1px solid rgba(239,68,68,0.3); padding-top: 15px; }
 
-        /* --- INFO GERAL / SUPORTE --- */
         .main-info-box { background: var(--bg-panel); border: 1px solid var(--border); padding: 20px; border-radius: 12px; margin-bottom: 30px; }
         .main-info-title { color: var(--secondary); font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;}
         .main-info-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
         .report-list { list-style: none; margin-top: 15px; }
         .report-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: var(--text-muted); font-size: 0.9rem; }
         .report-item i { color: var(--discord); }
@@ -144,7 +82,6 @@
         .support-tip { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; border: 1px solid var(--border); margin-top: 20px; }
         .tip-header { font-size: 0.9rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
 
-        /* --- ESPECIFICAÇÕES --- */
         .specs-section { margin-top: 40px; }
         .specs-header { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 15px; border-left: 3px solid var(--primary); padding-left: 10px; }
         .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
@@ -158,9 +95,21 @@
         .sc-glow { color: #34d399; text-shadow: 0 0 15px rgba(52, 211, 153, 0.3); }
         .cs-glow { color: #f472b6; text-shadow: 0 0 15px rgba(244, 114, 182, 0.3); }
 
-        /* Placeholder Pages */
-        .empty-state { text-align: center; padding: 50px 20px; color: var(--text-muted); }
-        .empty-icon { font-size: 3rem; margin-bottom: 20px; color: var(--border); }
+        /* CALIBRADOR ESTILOS */
+        .playstore-btn {
+            display: flex; align-items: center; gap: 15px;
+            background: rgba(0,0,0,0.5); border: 1px solid var(--border);
+            padding: 15px; border-radius: 12px; margin-top: 20px; transition: 0.2s;
+        }
+        .playstore-btn:hover { border-color: var(--playstore); background: rgba(0, 161, 115, 0.1); }
+        .playstore-btn i { color: var(--playstore); }
+        
+        .img-frame {
+            width: 100%; max-width: 400px; margin: 0 auto;
+            border-radius: 15px; overflow: hidden; border: 2px solid var(--border);
+            background: #000;
+        }
+        .config-img { width: 100%; height: auto; display: block; opacity: 0.9; }
 
         .mobile-toggle { display: none; position: fixed; top: 20px; right: 20px; background: rgba(0,0,0,0.8); border: 1px solid var(--border); color: white; padding: 10px; border-radius: 8px; z-index: 200; backdrop-filter: blur(5px); }
 
@@ -187,17 +136,9 @@
     <nav class="sidebar" id="sidebar">
         <div class="logo">1Drxker <span style="font-size:0.8rem; font-weight:400; color:#666; display:block;">Central</span></div>
         
-        <!-- Botão Main -->
-        <button class="menu-btn active" onclick="showPage('main', this)">
-            <div><i class="ph ph-house-line"></i> Main</div>
-        </button>
-        
-        <!-- Botão Suporte -->
-        <button class="menu-btn" onclick="showPage('support', this)">
-            <div><i class="ph ph-bug-beetle"></i> Relatar Bugs/Support</div>
-        </button>
+        <button class="menu-btn active" onclick="showPage('main', this)"><div><i class="ph ph-house-line"></i> Main</div></button>
+        <button class="menu-btn" onclick="showPage('support', this)"><div><i class="ph ph-bug-beetle"></i> Relatar Bugs/Support</div></button>
 
-        <!-- Menu Configurações (NOVO LOCAL + DROPDOWN) -->
         <button class="menu-btn" onclick="toggleSubmenu('menu-config')">
             <div><i class="ph ph-gear"></i> Configurações</div><i class="ph ph-caret-down"></i>
         </button>
@@ -207,7 +148,6 @@
             <span class="submenu-link" onclick="showPage('cursores', this)"><i class="ph ph-cursor"></i> Cursores</span>
         </div>
         
-        <!-- Menu Roblox Apks -->
         <button class="menu-btn" onclick="toggleSubmenu('menu-apk')">
             <div><i class="ph ph-game-controller"></i> Roblox APK's</div><i class="ph ph-caret-down"></i>
         </button>
@@ -228,7 +168,6 @@
                     <div class="channel-info"><span><i class="ph ph-youtube-logo"></i> 1Drxker</span> | <span style="color:var(--secondary)">100% Confiável</span></div>
                 </div>
             </div>
-
             <div class="content-container">
                 <div class="danger-box">
                     <div class="danger-header"><i class="ph ph-warning-octagon" style="font-size: 1.5rem; color: var(--danger);"></i><div class="danger-title">Status de Banimento</div></div>
@@ -283,51 +222,71 @@
             </div>
         </div>
 
-        <!-- === PÁGINAS VAZIAS (CONFIGURAÇÕES) === -->
+        <!-- === PÁGINA CALIBRADOR (NOVA) === -->
         <div id="calibrador" class="page">
-            <div class="content-container" style="padding-top:80px;">
-                <h1>Calibrador</h1>
-                <div class="empty-state"><i class="ph ph-crosshair empty-icon"></i><p>Página em construção...</p></div>
+            <div class="hero-banner" style="padding-bottom: 20px;">
+                <h1 style="font-size: 1.8rem;">CALIBRADOR / <span class="highlight">MOBILE</span></h1>
+                <p style="color: var(--text-muted);">Filtro de cor para visão noturna</p>
+            </div>
+
+            <div class="content-container" style="padding-top: 20px;">
+                
+                <div class="main-info-box">
+                    <div class="main-info-title"><i class="ph ph-eye"></i> O que é?</div>
+                    <p class="main-info-text">
+                        Calibrador serve para enxergar melhor com a neblina preta, que geralmente é chamada de sem neblina. Ele ajuda a realçar contrastes.
+                    </p>
+                </div>
+
+                <div class="main-info-box" style="margin-bottom: 20px;">
+                    <div class="main-info-title"><i class="ph ph-sliders-horizontal"></i> Como usar</div>
+                    <p class="main-info-text">
+                        Para usar ele é muito simples: basta ajustar as cores e colocar uma porcentagem de opacidade de acordo como achar melhor.
+                    </p>
+                </div>
+
+                <!-- Botão Download -->
+                <a href="https://play.google.com/store/apps/details?id=com.hardyinfinity.screen.color" target="_blank" class="playstore-btn">
+                    <i class="ph ph-google-play-logo" style="font-size: 2rem;"></i>
+                    <div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">BAIXAR NO</div>
+                        <div style="font-size: 1.1rem; font-weight: 700; color: #fff;">Google Play Store</div>
+                    </div>
+                </a>
+
+                <!-- Exemplo de Configuração -->
+                <div style="margin-top: 40px;">
+                    <h3 style="margin-bottom: 15px; border-left: 3px solid var(--secondary); padding-left: 10px; color: var(--text-main);">Exemplo de Configuração</h3>
+                    
+                    <div class="img-frame">
+                        <!-- ATENÇÃO: COLOQUE O LINK DA SUA IMAGEM AQUI NO SRC -->
+                        <!-- Exemplo: src="https://i.imgur.com/sua_imagem.jpg" -->
+                        <img src="https://placehold.co/400x500/121214/FFF?text=Cole+o+link+da+sua+imagem+no+codigo" alt="Configuração Print" class="config-img">
+                    </div>
+
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 15px; font-style: italic; border-top: 1px solid var(--border); padding-top: 10px;">
+                        <span style="color: var(--secondary); font-weight: 700;">Obs:</span> Vai da opinião de cada um e de quanto o seu celular aumenta o brilho.
+                    </p>
+                </div>
+
             </div>
         </div>
         
-        <div id="sounds" class="page">
-            <div class="content-container" style="padding-top:80px;">
-                <h1>Sounds</h1>
-                <div class="empty-state"><i class="ph ph-speaker-high empty-icon"></i><p>Página em construção...</p></div>
-            </div>
-        </div>
-
-        <div id="cursores" class="page">
-            <div class="content-container" style="padding-top:80px;">
-                <h1>Cursores</h1>
-                <div class="empty-state"><i class="ph ph-cursor empty-icon"></i><p>Página em construção...</p></div>
-            </div>
-        </div>
-
-        <!-- === PÁGINA DOWNLOADS === -->
+        <!-- PÁGINAS VAZIAS RESTANTES -->
+        <div id="sounds" class="page"><div class="content-container" style="padding-top:80px;"><h1>Sounds</h1><div class="empty-state"><i class="ph ph-speaker-high empty-icon"></i><p>Página em construção...</p></div></div></div>
+        <div id="cursores" class="page"><div class="content-container" style="padding-top:80px;"><h1>Cursores</h1><div class="empty-state"><i class="ph ph-cursor empty-icon"></i><p>Página em construção...</p></div></div></div>
         <div id="downloads" class="page"><div class="content-container" style="padding-top:80px;"><h1>Downloads</h1></div></div>
 
     </main>
 
     <script>
         function showPage(pageId, element) {
-            // Esconde todas as páginas
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
-            
-            // LIMPA O DESTAQUE DE TODOS OS BOTÕES (Botões grandes e links pequenos)
             document.querySelectorAll('.menu-btn, .submenu-link').forEach(el => el.classList.remove('active'));
-            
-            // ADICIONA DESTAQUE SÓ NO QUE FOI CLICADO (Se existir)
-            if (element) {
-                element.classList.add('active');
-            }
-            
-            // No celular, fecha o menu sidebar ao clicar
+            if (element) { element.classList.add('active'); }
             if(window.innerWidth <= 768) document.getElementById('sidebar').classList.remove('active');
         }
-
         function toggleSubmenu(id) { document.getElementById(id).classList.toggle('open'); }
         function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); }
     </script>

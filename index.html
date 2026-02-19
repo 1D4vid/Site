@@ -16,7 +16,8 @@
             --danger: #ef4444;
             --success: #10b981;
             --discord: #5865F2;
-            --playstore: #00A173; /* Verde PlayStore */
+            --playstore: #00A173;
+            --mediafire: #007bff; /* Azul Mediafire */
             --text-main: #ffffff;
             --text-muted: #9ca3af;
             --border: rgba(255, 255, 255, 0.08);
@@ -95,21 +96,22 @@
         .sc-glow { color: #34d399; text-shadow: 0 0 15px rgba(52, 211, 153, 0.3); }
         .cs-glow { color: #f472b6; text-shadow: 0 0 15px rgba(244, 114, 182, 0.3); }
 
-        /* CALIBRADOR ESTILOS */
-        .playstore-btn {
-            display: flex; align-items: center; gap: 15px;
-            background: rgba(0,0,0,0.5); border: 1px solid var(--border);
-            padding: 15px; border-radius: 12px; margin-top: 20px; transition: 0.2s;
-        }
+        /* CALIBRADOR & SOUNDS ESTILOS */
+        .playstore-btn { display: flex; align-items: center; gap: 15px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); padding: 15px; border-radius: 12px; margin-top: 20px; transition: 0.2s; }
         .playstore-btn:hover { border-color: var(--playstore); background: rgba(0, 161, 115, 0.1); }
         .playstore-btn i { color: var(--playstore); }
         
-        .img-frame {
-            width: 100%; max-width: 400px; margin: 0 auto;
-            border-radius: 15px; overflow: hidden; border: 2px solid var(--border);
-            background: #000;
-        }
+        .mediafire-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--mediafire); color: white; padding: 15px; border-radius: 8px; font-weight: 700; margin-top: 20px; transition: 0.2s; }
+        .mediafire-btn:hover { background: #0056b3; transform: translateY(-2px); }
+
+        .img-frame { width: 100%; max-width: 400px; margin: 0 auto; border-radius: 15px; overflow: hidden; border: 2px solid var(--border); background: #000; }
         .config-img { width: 100%; height: auto; display: block; opacity: 0.9; }
+
+        .path-box { background: rgba(0,0,0,0.3); padding: 10px; border-radius: 6px; border: 1px solid var(--border); font-family: monospace; color: var(--secondary); margin: 10px 0; display: inline-block; }
+        .filename-list { margin-top: 20px; display: grid; gap: 10px; }
+        .file-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; border: 1px solid transparent; }
+        .file-item:hover { border-color: var(--primary); }
+        .file-code { font-family: monospace; color: var(--text-main); font-weight: 700; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem; }
 
         .mobile-toggle { display: none; position: fixed; top: 20px; right: 20px; background: rgba(0,0,0,0.8); border: 1px solid var(--border); color: white; padding: 10px; border-radius: 8px; z-index: 200; backdrop-filter: blur(5px); }
 
@@ -222,58 +224,106 @@
             </div>
         </div>
 
-        <!-- === PÁGINA CALIBRADOR (NOVA) === -->
+        <!-- === PÁGINA CALIBRADOR === -->
         <div id="calibrador" class="page">
             <div class="hero-banner" style="padding-bottom: 20px;">
                 <h1 style="font-size: 1.8rem;">CALIBRADOR / <span class="highlight">MOBILE</span></h1>
                 <p style="color: var(--text-muted);">Filtro de cor para visão noturna</p>
             </div>
-
             <div class="content-container" style="padding-top: 20px;">
-                
                 <div class="main-info-box">
                     <div class="main-info-title"><i class="ph ph-eye"></i> O que é?</div>
-                    <p class="main-info-text">
-                        Calibrador serve para enxergar melhor com a neblina preta, que geralmente é chamada de sem neblina. Ele ajuda a realçar contrastes.
-                    </p>
+                    <p class="main-info-text">Calibrador serve para enxergar melhor com a neblina preta, que geralmente é chamada de sem neblina. Ele ajuda a realçar contrastes.</p>
                 </div>
-
                 <div class="main-info-box" style="margin-bottom: 20px;">
                     <div class="main-info-title"><i class="ph ph-sliders-horizontal"></i> Como usar</div>
-                    <p class="main-info-text">
-                        Para usar ele é muito simples: basta ajustar as cores e colocar uma porcentagem de opacidade de acordo como achar melhor.
-                    </p>
+                    <p class="main-info-text">Para usar ele é muito simples: basta ajustar as cores e colocar uma porcentagem de opacidade de acordo como achar melhor.</p>
                 </div>
-
-                <!-- Botão Download -->
                 <a href="https://play.google.com/store/apps/details?id=com.hardyinfinity.screen.color" target="_blank" class="playstore-btn">
                     <i class="ph ph-google-play-logo" style="font-size: 2rem;"></i>
-                    <div>
-                        <div style="font-size: 0.75rem; color: var(--text-muted);">BAIXAR NO</div>
-                        <div style="font-size: 1.1rem; font-weight: 700; color: #fff;">Google Play Store</div>
-                    </div>
+                    <div><div style="font-size: 0.75rem; color: var(--text-muted);">BAIXAR NO</div><div style="font-size: 1.1rem; font-weight: 700; color: #fff;">Google Play Store</div></div>
                 </a>
-
-                <!-- Exemplo de Configuração -->
                 <div style="margin-top: 40px;">
                     <h3 style="margin-bottom: 15px; border-left: 3px solid var(--secondary); padding-left: 10px; color: var(--text-main);">Exemplo de Configuração</h3>
-                    
                     <div class="img-frame">
-                        <!-- ATENÇÃO: COLOQUE O LINK DA SUA IMAGEM AQUI NO SRC -->
-                        <!-- Exemplo: src="https://i.imgur.com/sua_imagem.jpg" -->
-                        <img src="https://placehold.co/400x500/121214/FFF?text=Cole+o+link+da+sua+imagem+no+codigo" alt="Configuração Print" class="config-img">
+                        <!-- LINK DA IMAGEM ATUALIZADO ABAIXO -->
+                        <img src="https://i.imgur.com/KzX5r4c.jpeg" alt="Configuração Print" class="config-img">
                     </div>
-
                     <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 15px; font-style: italic; border-top: 1px solid var(--border); padding-top: 10px;">
                         <span style="color: var(--secondary); font-weight: 700;">Obs:</span> Vai da opinião de cada um e de quanto o seu celular aumenta o brilho.
                     </p>
                 </div>
+            </div>
+        </div>
+
+        <!-- === PÁGINA SOUNDS (NOVA) === -->
+        <div id="sounds" class="page">
+            <div class="hero-banner" style="padding-bottom: 20px;">
+                <h1 style="font-size: 1.8rem;">SOUNDS / <span class="highlight">PC MODS</span></h1>
+                <p style="color: var(--text-muted);">Tutorial de áudio customizado</p>
+            </div>
+            <div class="content-container" style="padding-top: 20px;">
+                
+                <div class="main-info-box">
+                    <div class="main-info-title"><i class="ph ph-desktop"></i> Tutorial de Instalação (PC)</div>
+                    <p class="main-info-text">
+                        Primeiro vá até a pasta do roblox e navegue até:<br>
+                        <span class="path-box">content \ sounds</span><br><br>
+                        Cole nesta pasta o arquivo de áudio que você baixou.
+                    </p>
+                    <p style="margin-top: 15px; font-size: 0.85rem; color: var(--danger);">
+                        <strong>OBS:</strong> O nome do arquivo tem que ser <strong>EXATAMENTE IGUAL</strong> ao original que foi trocado.
+                    </p>
+                </div>
+
+                <div class="specs-section">
+                    <div class="specs-header">REGRAS DE NOMES (RENOMEAR)</div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Copie os nomes abaixo para seus arquivos:</p>
+                    
+                    <div class="filename-list">
+                        <!-- Passos -->
+                        <div class="file-item">
+                            <div style="display:flex; gap:10px; align-items:center;">
+                                <i class="ph ph-footprints" style="font-size: 1.2rem; color: var(--primary);"></i>
+                                <span>Passos</span>
+                            </div>
+                            <span class="file-code">action_footsteps_plastic</span>
+                        </div>
+                        
+                        <!-- Pulo -->
+                        <div class="file-item">
+                            <div style="display:flex; gap:10px; align-items:center;">
+                                <i class="ph ph-arrow-up" style="font-size: 1.2rem; color: var(--secondary);"></i>
+                                <span>Pulo</span>
+                            </div>
+                            <span class="file-code">action_jump</span>
+                        </div>
+
+                        <!-- Queda -->
+                        <div class="file-item">
+                            <div style="display:flex; gap:10px; align-items:center;">
+                                <i class="ph ph-arrow-down" style="font-size: 1.2rem; color: var(--danger);"></i>
+                                <span>Queda (Land)</span>
+                            </div>
+                            <span class="file-code">action_jump_land</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px;">
+                    <div class="main-info-title"><i class="ph ph-download-simple"></i> Downloads</div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Passos, pulos e quedas estourados (Pastas com vários tipos).</p>
+                    
+                    <a href="https://www.mediafire.com/folder/t7wh0xchfybpy/sounds" target="_blank" class="mediafire-btn">
+                        <i class="ph ph-folder-notch-open" style="font-size: 1.3rem;"></i>
+                        BAIXAR PACK NO MEDIAFIRE
+                    </a>
+                </div>
 
             </div>
         </div>
-        
+
         <!-- PÁGINAS VAZIAS RESTANTES -->
-        <div id="sounds" class="page"><div class="content-container" style="padding-top:80px;"><h1>Sounds</h1><div class="empty-state"><i class="ph ph-speaker-high empty-icon"></i><p>Página em construção...</p></div></div></div>
         <div id="cursores" class="page"><div class="content-container" style="padding-top:80px;"><h1>Cursores</h1><div class="empty-state"><i class="ph ph-cursor empty-icon"></i><p>Página em construção...</p></div></div></div>
         <div id="downloads" class="page"><div class="content-container" style="padding-top:80px;"><h1>Downloads</h1></div></div>
 

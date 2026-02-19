@@ -17,7 +17,7 @@
             --success: #10b981;
             --discord: #5865F2;
             --playstore: #00A173;
-            --mediafire: #007bff; /* Azul Mediafire */
+            --mediafire: #007bff;
             --text-main: #ffffff;
             --text-muted: #9ca3af;
             --border: rgba(255, 255, 255, 0.08);
@@ -59,7 +59,7 @@
         .highlight { color: var(--secondary); }
         .channel-info { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-top: 12px; font-weight: 500; }
 
-        /* ELEMENTS */
+        /* BOXES */
         .danger-box { background: linear-gradient(145deg, rgba(239, 68, 68, 0.05), rgba(0,0,0,0)); border: 1px solid var(--danger); border-left: 4px solid var(--danger); border-radius: 12px; padding: 25px; margin-top: 30px; margin-bottom: 30px; box-shadow: 0 0 25px rgba(239, 68, 68, 0.15); }
         .danger-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
         .danger-title { color: var(--danger); font-size: 1.2rem; font-weight: 700; }
@@ -75,14 +75,31 @@
         .main-info-title { color: var(--secondary); font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;}
         .main-info-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
 
+        /* BUTTONS & IMAGES */
+        .playstore-btn { display: flex; align-items: center; gap: 15px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); padding: 15px; border-radius: 12px; margin-top: 20px; transition: 0.2s; }
+        .playstore-btn:hover { border-color: var(--playstore); background: rgba(0, 161, 115, 0.1); }
+        .playstore-btn i { color: var(--playstore); }
+        
+        .mediafire-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--mediafire); color: white; padding: 15px; border-radius: 8px; font-weight: 700; margin-top: 20px; transition: 0.2s; }
+        .mediafire-btn:hover { background: #0056b3; transform: translateY(-2px); }
+
+        .img-frame { width: 100%; max-width: 400px; margin: 0 auto; border-radius: 15px; overflow: hidden; border: 2px solid var(--border); background: #000; }
+        .config-img { width: 100%; height: auto; display: block; opacity: 0.9; }
+
+        /* TUTORIAL ELEMENTS */
+        .path-box { background: rgba(0,0,0,0.3); padding: 10px; border-radius: 6px; border: 1px solid var(--border); font-family: monospace; color: var(--secondary); margin: 10px 0; display: inline-block; word-break: break-all; }
+        .filename-list { margin-top: 20px; display: grid; gap: 10px; }
+        .file-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; border: 1px solid transparent; }
+        .file-code { font-family: monospace; color: var(--text-main); font-weight: 700; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem; }
+
         .report-list { list-style: none; margin-top: 15px; }
         .report-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: var(--text-muted); font-size: 0.9rem; }
-        .report-item i { color: var(--discord); }
         .discord-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background-color: var(--discord); color: white; padding: 15px; border-radius: 8px; font-weight: 700; margin-top: 20px; transition: 0.2s; border: 1px solid transparent; }
         .discord-btn:hover { background-color: #4752c4; transform: translateY(-2px); }
         .support-tip { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; border: 1px solid var(--border); margin-top: 20px; }
         .tip-header { font-size: 0.9rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
 
+        /* SPECS */
         .specs-section { margin-top: 40px; }
         .specs-header { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 15px; border-left: 3px solid var(--primary); padding-left: 10px; }
         .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
@@ -95,23 +112,6 @@
         .ss-glow { color: #60a5fa; text-shadow: 0 0 15px rgba(96, 165, 250, 0.3); }
         .sc-glow { color: #34d399; text-shadow: 0 0 15px rgba(52, 211, 153, 0.3); }
         .cs-glow { color: #f472b6; text-shadow: 0 0 15px rgba(244, 114, 182, 0.3); }
-
-        /* CALIBRADOR & SOUNDS ESTILOS */
-        .playstore-btn { display: flex; align-items: center; gap: 15px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); padding: 15px; border-radius: 12px; margin-top: 20px; transition: 0.2s; }
-        .playstore-btn:hover { border-color: var(--playstore); background: rgba(0, 161, 115, 0.1); }
-        .playstore-btn i { color: var(--playstore); }
-        
-        .mediafire-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--mediafire); color: white; padding: 15px; border-radius: 8px; font-weight: 700; margin-top: 20px; transition: 0.2s; }
-        .mediafire-btn:hover { background: #0056b3; transform: translateY(-2px); }
-
-        .img-frame { width: 100%; max-width: 400px; margin: 0 auto; border-radius: 15px; overflow: hidden; border: 2px solid var(--border); background: #000; }
-        .config-img { width: 100%; height: auto; display: block; opacity: 0.9; }
-
-        .path-box { background: rgba(0,0,0,0.3); padding: 10px; border-radius: 6px; border: 1px solid var(--border); font-family: monospace; color: var(--secondary); margin: 10px 0; display: inline-block; }
-        .filename-list { margin-top: 20px; display: grid; gap: 10px; }
-        .file-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; border: 1px solid transparent; }
-        .file-item:hover { border-color: var(--primary); }
-        .file-code { font-family: monospace; color: var(--text-main); font-weight: 700; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem; }
 
         .mobile-toggle { display: none; position: fixed; top: 20px; right: 20px; background: rgba(0,0,0,0.8); border: 1px solid var(--border); color: white; padding: 10px; border-radius: 8px; z-index: 200; backdrop-filter: blur(5px); }
 
@@ -246,8 +246,8 @@
                 <div style="margin-top: 40px;">
                     <h3 style="margin-bottom: 15px; border-left: 3px solid var(--secondary); padding-left: 10px; color: var(--text-main);">Exemplo de Configuração</h3>
                     <div class="img-frame">
-                        <!-- LINK DA IMAGEM ATUALIZADO ABAIXO -->
-                        <img src="https://i.imgur.com/KzX5r4c.jpeg" alt="Configuração Print" class="config-img">
+                        <!-- LINK RAW GITHUB -->
+                        <img src="https://raw.githubusercontent.com/1D4vid/Site/main/unnamed.png" alt="Configuração Print" class="config-img">
                     </div>
                     <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 15px; font-style: italic; border-top: 1px solid var(--border); padding-top: 10px;">
                         <span style="color: var(--secondary); font-weight: 700;">Obs:</span> Vai da opinião de cada um e de quanto o seu celular aumenta o brilho.
@@ -256,14 +256,13 @@
             </div>
         </div>
 
-        <!-- === PÁGINA SOUNDS (NOVA) === -->
+        <!-- === PÁGINA SOUNDS === -->
         <div id="sounds" class="page">
             <div class="hero-banner" style="padding-bottom: 20px;">
                 <h1 style="font-size: 1.8rem;">SOUNDS / <span class="highlight">PC MODS</span></h1>
                 <p style="color: var(--text-muted);">Tutorial de áudio customizado</p>
             </div>
             <div class="content-container" style="padding-top: 20px;">
-                
                 <div class="main-info-box">
                     <div class="main-info-title"><i class="ph ph-desktop"></i> Tutorial de Instalação (PC)</div>
                     <p class="main-info-text">
@@ -275,56 +274,88 @@
                         <strong>OBS:</strong> O nome do arquivo tem que ser <strong>EXATAMENTE IGUAL</strong> ao original que foi trocado.
                     </p>
                 </div>
-
                 <div class="specs-section">
                     <div class="specs-header">REGRAS DE NOMES (RENOMEAR)</div>
                     <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Copie os nomes abaixo para seus arquivos:</p>
-                    
                     <div class="filename-list">
-                        <!-- Passos -->
-                        <div class="file-item">
-                            <div style="display:flex; gap:10px; align-items:center;">
-                                <i class="ph ph-footprints" style="font-size: 1.2rem; color: var(--primary);"></i>
-                                <span>Passos</span>
-                            </div>
-                            <span class="file-code">action_footsteps_plastic</span>
-                        </div>
-                        
-                        <!-- Pulo -->
-                        <div class="file-item">
-                            <div style="display:flex; gap:10px; align-items:center;">
-                                <i class="ph ph-arrow-up" style="font-size: 1.2rem; color: var(--secondary);"></i>
-                                <span>Pulo</span>
-                            </div>
-                            <span class="file-code">action_jump</span>
-                        </div>
-
-                        <!-- Queda -->
-                        <div class="file-item">
-                            <div style="display:flex; gap:10px; align-items:center;">
-                                <i class="ph ph-arrow-down" style="font-size: 1.2rem; color: var(--danger);"></i>
-                                <span>Queda (Land)</span>
-                            </div>
-                            <span class="file-code">action_jump_land</span>
-                        </div>
+                        <div class="file-item"><div style="display:flex; gap:10px; align-items:center;"><i class="ph ph-footprints" style="font-size: 1.2rem; color: var(--primary);"></i><span>Passos</span></div><span class="file-code">action_footsteps_plastic</span></div>
+                        <div class="file-item"><div style="display:flex; gap:10px; align-items:center;"><i class="ph ph-arrow-up" style="font-size: 1.2rem; color: var(--secondary);"></i><span>Pulo</span></div><span class="file-code">action_jump</span></div>
+                        <div class="file-item"><div style="display:flex; gap:10px; align-items:center;"><i class="ph ph-arrow-down" style="font-size: 1.2rem; color: var(--danger);"></i><span>Queda (Land)</span></div><span class="file-code">action_jump_land</span></div>
                     </div>
                 </div>
-
                 <div style="margin-top: 40px;">
                     <div class="main-info-title"><i class="ph ph-download-simple"></i> Downloads</div>
                     <p style="color: var(--text-muted); font-size: 0.9rem;">Passos, pulos e quedas estourados (Pastas com vários tipos).</p>
-                    
                     <a href="https://www.mediafire.com/folder/t7wh0xchfybpy/sounds" target="_blank" class="mediafire-btn">
+                        <i class="ph ph-folder-notch-open" style="font-size: 1.3rem;"></i> BAIXAR PACK NO MEDIAFIRE
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- === PÁGINA CURSORES (NOVA) === -->
+        <div id="cursores" class="page">
+            <div class="hero-banner" style="padding-bottom: 20px;">
+                <h1 style="font-size: 1.8rem;">CURSORES / <span class="highlight">CROSSHAIR</span></h1>
+                <p style="color: var(--text-muted);">Customização para PC e Mobile</p>
+            </div>
+            
+            <div class="content-container" style="padding-top: 20px;">
+                
+                <div class="main-info-box">
+                    <p class="main-info-text">
+                        Cursores para PC e mobile.<br>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">obs: também pode ser usado para mobile através de aplicativos.</span>
+                    </p>
+                </div>
+
+                <!-- Seção Mobile -->
+                <h3 style="margin-bottom: 15px; color: var(--success); display: flex; align-items: center; gap: 8px;">
+                    <i class="ph ph-device-mobile"></i> MOBILE
+                </h3>
+                <div class="main-info-box">
+                    <div class="main-info-title">Como colocar no mobile?</div>
+                    <p class="main-info-text">
+                        Isso é muito simples, basta instalar o aplicativo abaixo, aceitar tudo que pedir (não há risco nenhum) e ir na parte "custom", depois é só colocar o cursor que deseja.
+                    </p>
+                    
+                    <a href="https://play.google.com/store/apps/details?id=me.okitastudio.crosshairherofps" target="_blank" class="playstore-btn">
+                        <i class="ph ph-google-play-logo" style="font-size: 2rem;"></i>
+                        <div><div style="font-size: 0.75rem; color: var(--text-muted);">BAIXAR APP</div><div style="font-size: 1.1rem; font-weight: 700; color: #fff;">Crosshair Hero</div></div>
+                    </a>
+                </div>
+
+                <!-- Seção PC -->
+                <h3 style="margin-bottom: 15px; margin-top: 40px; color: var(--primary); display: flex; align-items: center; gap: 8px;">
+                    <i class="ph ph-desktop"></i> PC
+                </h3>
+                <div class="main-info-box">
+                    <div class="main-info-title">Tutorial para PC</div>
+                    <p class="main-info-text">
+                        1 - Vá até a pasta do roblox, e navegue até:
+                        <span class="path-box">...\content\textures\Cursors\KeyboardMouse</span>
+                        <br><br>
+                        2 - Nessa pasta, cole o arquivo e renomeie ela substituindo qual cursor você quiser.
+                        <br>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">(o nome do arquivo tem que ser igual ao que você substituiu).</span>
+                    </p>
+                </div>
+
+                <!-- Download Pack -->
+                <div style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px;">
+                    <div class="main-info-title"><i class="ph ph-download-simple"></i> Download do Pack</div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Pacote completo com vários cursores.</p>
+                    
+                    <a href="https://www.mediafire.com/file/viztnhqpagmj65a" target="_blank" class="mediafire-btn">
                         <i class="ph ph-folder-notch-open" style="font-size: 1.3rem;"></i>
-                        BAIXAR PACK NO MEDIAFIRE
+                        BAIXAR PACK DE CURSORES
                     </a>
                 </div>
 
             </div>
         </div>
 
-        <!-- PÁGINAS VAZIAS RESTANTES -->
-        <div id="cursores" class="page"><div class="content-container" style="padding-top:80px;"><h1>Cursores</h1><div class="empty-state"><i class="ph ph-cursor empty-icon"></i><p>Página em construção...</p></div></div></div>
+        <!-- === PÁGINA DOWNLOADS === -->
         <div id="downloads" class="page"><div class="content-container" style="padding-top:80px;"><h1>Downloads</h1></div></div>
 
     </main>

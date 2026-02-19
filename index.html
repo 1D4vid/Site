@@ -14,6 +14,7 @@
             --primary: #8b5cf6;
             --secondary: #06b6d4;
             --danger: #ef4444;
+            --success: #10b981;
             --danger-glow: rgba(239, 68, 68, 0.15);
             --text-main: #ffffff;
             --text-muted: #9ca3af;
@@ -93,50 +94,58 @@
         .highlight { color: var(--secondary); }
         .channel-info { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-top: 12px; font-weight: 500; }
 
-        /* --- ALERTA BANIMENTO --- */
+        /* --- ALERTA BANIMENTO (DIVIDIDO) --- */
         .danger-box {
-            background: linear-gradient(145deg, rgba(239, 68, 68, 0.04), rgba(0,0,0,0));
+            background: linear-gradient(145deg, rgba(239, 68, 68, 0.05), rgba(0,0,0,0));
             border: 1px solid var(--danger); border-left: 4px solid var(--danger);
-            border-radius: 12px; padding: 22px;
-            margin-top: 30px; 
-            margin-bottom: 30px;
+            border-radius: 12px; padding: 25px;
+            margin-top: 30px; margin-bottom: 30px;
             box-shadow: 0 0 25px var(--danger-glow);
         }
-        .danger-title { color: var(--danger); font-size: 1.1rem; font-weight: 700; display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        .danger-text { color: #ffcece; font-size: 0.92rem; line-height: 1.6; }
+        .danger-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .danger-title { color: var(--danger); font-size: 1.2rem; font-weight: 700; }
+        
+        .ban-status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+        .status-item { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; border: 1px solid var(--border); }
+        
+        .st-title { font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 5px; }
+        .st-val { font-size: 1rem; font-weight: 700; }
+        
+        .risk-high { color: var(--danger); }
+        .risk-safe { color: var(--success); }
 
-        /* --- INFO GERAL (Restaurado para o texto original) --- */
+        .danger-text { color: #ffcece; font-size: 0.9rem; line-height: 1.6; margin-top: 15px; border-top: 1px solid rgba(239,68,68,0.3); padding-top: 15px; }
+
+        /* --- INFO GERAL --- */
         .main-info-box {
-            background: var(--bg-panel);
-            border: 1px solid var(--border);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 30px;
+            background: var(--bg-panel); border: 1px solid var(--border);
+            padding: 20px; border-radius: 12px; margin-bottom: 30px;
         }
         .main-info-title { color: var(--secondary); font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;}
         .main-info-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
 
-        /* --- 32 vs 64 (Técnico/Nerdola) --- */
-        .bits-technical {
-            background: rgba(0,0,0,0.2);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 30px;
+        /* --- ESPECIFICAÇÕES (ANTIGA LEGENDA - AGORA EM DESTAQUE) --- */
+        .specs-section { margin-top: 40px; }
+        .specs-header { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 15px; border-left: 3px solid var(--primary); padding-left: 10px; }
+        
+        .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        
+        .spec-card {
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+            padding: 20px; border-radius: 10px; position: relative; overflow: hidden;
+            transition: transform 0.2s;
         }
-        .tech-header { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        .spec-card:hover { transform: translateY(-3px); border-color: var(--primary); }
         
-        .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        
-        .tech-item h4 { color: var(--text-main); font-family: monospace; font-size: 1rem; margin-bottom: 5px; color: var(--secondary); }
-        .tech-item p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
-        .tag-arch { display: inline-block; font-size: 0.7rem; background: var(--code-bg); padding: 2px 6px; border-radius: 4px; color: #aaa; margin-left: 5px; }
+        .spec-code { font-size: 2rem; font-weight: 900; line-height: 1; margin-bottom: 5px; }
+        .spec-detail { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; display: flex; flex-direction: column; gap: 2px; }
+        .spec-detail span { display: flex; align-items: center; gap: 6px; }
 
-        /* LEGENDAS */
-        .legend-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
-        .legend-item { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 12px 5px; border-radius: 8px; text-align: center; }
-        .legend-code { font-size: 1.1rem; font-weight: 800; color: var(--text-main); margin-bottom: 2px;}
-        .legend-desc { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; }
+        /* Cores Neon para as specs */
+        .cc-glow { color: #a78bfa; text-shadow: 0 0 15px rgba(167, 139, 250, 0.3); }
+        .ss-glow { color: #60a5fa; text-shadow: 0 0 15px rgba(96, 165, 250, 0.3); }
+        .sc-glow { color: #34d399; text-shadow: 0 0 15px rgba(52, 211, 153, 0.3); }
+        .cs-glow { color: #f472b6; text-shadow: 0 0 15px rgba(244, 114, 182, 0.3); }
 
         .mobile-toggle { display: none; position: fixed; top: 20px; right: 20px; background: rgba(0,0,0,0.8); border: 1px solid var(--border); color: white; padding: 10px; border-radius: 8px; z-index: 200; backdrop-filter: blur(5px); }
 
@@ -146,7 +155,7 @@
             .mobile-toggle { display: block; }
             h1 { font-size: 1.9rem; }
             .hero-banner { padding: 40px 20px 30px 20px; }
-            .tech-grid { grid-template-columns: 1fr; } /* Um embaixo do outro no celular */
+            .ban-status-grid { grid-template-columns: 1fr; } /* Um embaixo do outro no celular */
         }
 
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
@@ -189,50 +198,95 @@
             </div>
 
             <div class="content-container">
-                <!-- Caixa de Aviso -->
+                <!-- Caixa de Aviso de Banimento (Reestruturada) -->
                 <div class="danger-box">
-                    <div class="danger-title"><i class="ph ph-warning-octagon" style="font-size: 1.3rem;"></i> Posso ser banido?</div>
+                    <div class="danger-header">
+                        <i class="ph ph-warning-octagon" style="font-size: 1.5rem; color: var(--danger);"></i>
+                        <div class="danger-title">Status de Banimento</div>
+                    </div>
+
+                    <!-- Grid de Comparação -->
+                    <div class="ban-status-grid">
+                        <div class="status-item" style="border-left: 3px solid var(--danger);">
+                            <div class="st-title">Flee the Facility</div>
+                            <div class="st-val risk-high">POSSÍVEL ⚠️</div>
+                            <div style="font-size: 0.75rem; color: #777; margin-top: 5px;">Via Report Manual</div>
+                        </div>
+                        <div class="status-item" style="border-left: 3px solid var(--success);">
+                            <div class="st-title">Conta Roblox (Plataforma)</div>
+                            <div class="st-val risk-safe">SEGURO ✅</div>
+                            <div style="font-size: 0.75rem; color: #777; margin-top: 5px;">Client-Side Indetectável</div>
+                        </div>
+                    </div>
+
                     <p class="danger-text">
-                        <strong>Sim, pode acontecer.</strong> Atualmente, usar qualquer APK modificado no Flee the Facility pode causar banimento.
-                        <br><br>
-                        🚫 <strong>Como evitar:</strong> Não grave vídeos nem tire prints mostrando o APK modificado. Fazendo isso, as chances de banimento diminuem bastante.
+                        <strong>Atenção:</strong> Você <strong>não</strong> será banido do Roblox (perder a conta), apenas banido do jogo <em>Flee the Facility</em> se for pego.<br><br>
+                        🚫 <strong>Prevenção:</strong> Não grave vídeos nem tire prints mostrando a interface modificada. Isso anula 99% das chances de report.
                     </p>
                 </div>
 
-                <!-- Info Box (Texto original) -->
+                <!-- Info Box (Texto Original) -->
                 <div class="main-info-box">
-                    <div class="main-info-title"><i class="ph ph-info"></i> Para que serve?</div>
+                    <div class="main-info-title"><i class="ph ph-info"></i> Utilidade do Patch</div>
                     <p class="main-info-text">
                         Resumidamente, roblox apk para FTF te dá algumas vantagens em questão de som (para ouvir passos e pulos dos players) e em desempenho.
                     </p>
                 </div>
 
-                <!-- Seção Técnica (Nerdola) -->
-                <div class="bits-technical">
-                    <div class="tech-header">Especificações de Arquitetura</div>
-                    <div class="tech-grid">
-                        <div class="tech-item">
-                            <h4>64 Bits <span class="tag-arch">ARM64-v8a</span></h4>
-                            <p>Arquitetura moderna com conjunto de instruções complexo. Suporta alocação de memória dinâmica superior a 4GB e processamento de dados nativo.</p>
+                <!-- ESPECIFICAÇÕES (ANTIGA LEGENDA) - AGORA BEM VISÍVEL -->
+                <div class="specs-section">
+                    <div class="specs-header">ESPECIFICAÇÕES DE MÓDULOS</div>
+                    
+                    <div class="specs-grid">
+                        <!-- CC -->
+                        <div class="spec-card">
+                            <div class="spec-code cc-glow">CC</div>
+                            <div class="spec-detail">
+                                <span><i class="ph ph-check" style="color:var(--success)"></i> Com Neblina</span>
+                                <span><i class="ph ph-check" style="color:var(--success)"></i> Com Skin</span>
+                            </div>
                         </div>
-                        <div class="tech-item">
-                            <h4 style="color:var(--text-muted)">32 Bits <span class="tag-arch">armeabi-v7a</span></h4>
-                            <p>Arquitetura Legacy. Conjunto de instruções reduzido. Indicado estritamente para compatibilidade com processadores antigos ou kernels limitados.</p>
+                        
+                        <!-- SS -->
+                        <div class="spec-card">
+                            <div class="spec-code ss-glow">SS</div>
+                            <div class="spec-detail">
+                                <span><i class="ph ph-x" style="color:var(--danger)"></i> Sem Neblina</span>
+                                <span><i class="ph ph-x" style="color:var(--danger)"></i> Sem Skin</span>
+                            </div>
+                        </div>
+
+                        <!-- SC -->
+                        <div class="spec-card">
+                            <div class="spec-code sc-glow">SC</div>
+                            <div class="spec-detail">
+                                <span><i class="ph ph-x" style="color:var(--danger)"></i> Sem Neblina</span>
+                                <span><i class="ph ph-check" style="color:var(--success)"></i> Com Skin</span>
+                            </div>
+                        </div>
+
+                        <!-- CS -->
+                        <div class="spec-card">
+                            <div class="spec-code cs-glow">CS</div>
+                            <div class="spec-detail">
+                                <span><i class="ph ph-check" style="color:var(--success)"></i> Com Neblina</span>
+                                <span><i class="ph ph-x" style="color:var(--danger)"></i> Sem Skin</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <h3 style="margin-bottom: 5px; font-size: 0.9rem; color: var(--text-muted);">Legenda</h3>
-                <div class="legend-grid">
-                    <div class="legend-item"><div class="legend-code" style="color:#a78bfa">CC</div><div class="legend-desc">Com Neblina<br>Com Skin</div></div>
-                    <div class="legend-item"><div class="legend-code" style="color:#60a5fa">SS</div><div class="legend-desc">Sem Neblina<br>Sem Skin</div></div>
-                    <div class="legend-item"><div class="legend-code" style="color:#34d399">SC</div><div class="legend-desc">Sem Neblina<br>Com Skin</div></div>
-                    <div class="legend-item"><div class="legend-code" style="color:#f472b6">CS</div><div class="legend-desc">Com Neblina<br>Sem Skin</div></div>
+                <!-- Rodapé de info técnica (Nerdola) -->
+                <div style="margin-top: 30px; border-top: 1px solid var(--border); padding-top: 15px; color: var(--text-muted); font-size: 0.8rem; font-family: monospace;">
+                    ARCHITECTURE: ARM64-v8a / ARMEABI-v7a<br>
+                    RENDER PIPELINE: OPENGL ES 3.0<br>
+                    PATCH INTEGRITY: UNVERIFIED (USE AT OWN RISK)
                 </div>
+
             </div>
         </div>
 
-        <!-- === PÁGINA VAZIA (Por enquanto) === -->
+        <!-- === PÁGINAS VAZIAS === -->
         <div id="downloads" class="page"><div class="content-container" style="padding-top:80px;"><h1>Downloads</h1></div></div>
         <div id="config" class="page"><div class="content-container" style="padding-top:80px;"><h1>Configurações</h1></div></div>
 

@@ -9,8 +9,7 @@
 
     <style>
         :root {
-            --bg-dark: #050505;
-            --bg-panel: #0e0e10;
+            --bg-panel: rgba(14, 14, 16, 0.85); /* Fundo dos painéis mais transparente */
             --primary: #8b5cf6;
             --secondary: #06b6d4;
             --danger: #ef4444;
@@ -19,29 +18,51 @@
             --playstore: #00A173;
             --mediafire: #007bff;
             --text-main: #ffffff;
-            --text-muted: #9ca3af;
-            --border: rgba(255, 255, 255, 0.08);
-            --code-bg: rgba(0,0,0,0.4);
+            --text-muted: #b0b0b0; /* Texto um pouco mais claro para contraste */
+            --border: rgba(255, 255, 255, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
         
-        body { background-color: var(--bg-dark); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; }
+        body { 
+            /* WALLPAPER GLOBAL AQUI */
+            background-image: url('https://raw.githubusercontent.com/1D4vid/Site/main/44fecc3db4488130ccf34255198054cf.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* O fundo fica parado ao rolar */
+            color: var(--text-main); 
+            display: flex; height: 100vh; overflow: hidden;
+            position: relative;
+        }
+
+        /* Máscara escura para ler o texto */
+        body::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); /* Opacidade do fundo preto (Ajuste se quiser mais claro/escuro) */
+            z-index: -1;
+        }
+
         a { text-decoration: none; color: inherit; }
 
         /* SIDEBAR */
-        .sidebar { width: 260px; background: #0a0a0a; border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 20px; z-index: 100; transition: transform 0.3s ease; }
+        .sidebar { 
+            width: 260px; 
+            background: rgba(10, 10, 10, 0.7); /* Sidebar translúcida */
+            backdrop-filter: blur(10px); /* Efeito de vidro */
+            border-right: 1px solid var(--border); 
+            display: flex; flex-direction: column; padding: 20px; z-index: 100; transition: transform 0.3s ease; 
+        }
         .logo { font-size: 1.4rem; font-weight: 800; margin-bottom: 30px; background: linear-gradient(to right, #fff, var(--text-muted)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
         .menu-btn { width: 100%; padding: 12px; border-radius: 8px; background: transparent; border: 1px solid transparent; color: var(--text-muted); text-align: left; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-size: 0.95rem; font-weight: 500; margin-bottom: 5px; transition: 0.2s; }
-        .menu-btn:hover { background: rgba(255,255,255,0.03); color: var(--text-main); border-color: var(--border); }
-        .menu-btn.active { background: rgba(139, 92, 246, 0.1); color: var(--primary); border-left: 3px solid var(--primary); border-color: rgba(139, 92, 246, 0.2); }
+        .menu-btn:hover { background: rgba(255,255,255,0.05); color: var(--text-main); border-color: var(--border); }
+        .menu-btn.active { background: rgba(139, 92, 246, 0.2); color: var(--primary); border-left: 3px solid var(--primary); border-color: rgba(139, 92, 246, 0.2); }
 
         .submenu { display: none; margin-left: 10px; padding-left: 15px; border-left: 1px solid var(--border); margin-top: 5px; margin-bottom: 10px; }
         .submenu.open { display: block; animation: slideIn 0.3s; }
         .submenu-link { display: flex; align-items: center; gap: 8px; padding: 8px 10px; color: var(--text-muted); font-size: 0.85rem; cursor: pointer; border-radius: 6px; transition: 0.2s; margin-bottom: 2px; }
-        .submenu-link:hover { color: var(--text-main); background: rgba(255,255,255,0.03); }
-        .submenu-link.active { color: var(--primary); background: rgba(139, 92, 246, 0.1); font-weight: 600; }
+        .submenu-link:hover { color: var(--text-main); background: rgba(255,255,255,0.05); }
+        .submenu-link.active { color: var(--primary); background: rgba(139, 92, 246, 0.2); font-weight: 600; }
 
         /* CONTENT */
         .main-content { flex: 1; padding: 0; overflow-y: auto; position: relative; }
@@ -49,8 +70,8 @@
 
         /* HERO BANNER */
         .hero-banner { position: relative; width: 100%; padding: 50px 25px 40px 25px; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
-        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXZ5Ynd3anF4bnJ4NnJ4eXJ4bnJ4bnJ4bnJ4bnJ4bnJ4bnJ4bnJ4YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/U3qYN8S0j3bpK/giphy.gif'); background-size: cover; background-position: center; opacity: 0.25; z-index: 0; filter: grayscale(100%) contrast(1.2); }
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, var(--bg-dark), transparent 90%); z-index: 1; }
+        /* Hero BG removido para mostrar o wallpaper global, mantendo apenas um leve gradiente */
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent 90%); z-index: 1; }
         .hero-text { position: relative; z-index: 2; width: 100%; padding-top: 20px; }
 
         .status-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(245, 158, 11, 0.1); color: #fbbf24; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(245, 158, 11, 0.25); margin-bottom: 15px; }
@@ -60,20 +81,36 @@
         .channel-info { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-top: 12px; font-weight: 500; }
 
         /* BOXES */
-        .danger-box { background: linear-gradient(145deg, rgba(239, 68, 68, 0.05), rgba(0,0,0,0)); border: 1px solid var(--danger); border-left: 4px solid var(--danger); border-radius: 12px; padding: 25px; margin-top: 30px; margin-bottom: 30px; box-shadow: 0 0 25px rgba(239, 68, 68, 0.15); }
+        .danger-box { background: linear-gradient(145deg, rgba(239, 68, 68, 0.1), rgba(0,0,0,0)); border: 1px solid var(--danger); border-left: 4px solid var(--danger); border-radius: 12px; padding: 25px; margin-top: 30px; margin-bottom: 30px; box-shadow: 0 0 25px rgba(239, 68, 68, 0.15); backdrop-filter: blur(5px); }
         .danger-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
         .danger-title { color: var(--danger); font-size: 1.2rem; font-weight: 700; }
         .ban-status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
-        .status-item { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; border: 1px solid var(--border); }
+        .status-item { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 8px; border: 1px solid var(--border); }
         .st-title { font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 5px; }
         .st-val { font-size: 1rem; font-weight: 700; }
         .risk-high { color: var(--danger); }
         .risk-safe { color: var(--success); }
         .danger-text { color: #ffcece; font-size: 0.9rem; line-height: 1.6; margin-top: 15px; border-top: 1px solid rgba(239,68,68,0.3); padding-top: 15px; }
 
-        .main-info-box { background: var(--bg-panel); border: 1px solid var(--border); padding: 20px; border-radius: 12px; margin-bottom: 30px; }
+        .main-info-box { background: var(--bg-panel); border: 1px solid var(--border); padding: 20px; border-radius: 12px; margin-bottom: 30px; backdrop-filter: blur(5px); }
         .main-info-title { color: var(--secondary); font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;}
         .main-info-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+        /* DOWNLOAD FOLDERS */
+        .arch-folder { margin-bottom: 15px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-panel); overflow: hidden; backdrop-filter: blur(5px); }
+        .arch-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: rgba(255,255,255,0.02); }
+        .arch-title { font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+        .arch-icon { color: var(--text-muted); transition: 0.3s; }
+        .arch-folder.open .arch-icon { transform: rotate(180deg); color: var(--primary); }
+        .arch-folder.open .arch-header { border-bottom: 1px solid var(--border); }
+        .arch-content { display: none; padding: 15px; background: rgba(0,0,0,0.2); }
+        .arch-folder.open .arch-content { display: grid; grid-template-columns: 1fr; gap: 10px; animation: slideIn 0.2s; }
+        .dl-item { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.03); padding: 12px 15px; border-radius: 8px; border: 1px solid transparent; }
+        .dl-item:hover { border-color: var(--secondary); background: rgba(6, 182, 212, 0.05); }
+        .dl-info b { display: block; color: var(--text-main); font-size: 0.95rem; }
+        .dl-info span { font-size: 0.75rem; color: var(--text-muted); }
+        .dl-btn { background: var(--secondary); color: #000; padding: 8px 15px; border-radius: 6px; font-weight: 700; font-size: 0.8rem; display: flex; align-items: center; gap: 5px; }
+
 
         /* BUTTONS & IMAGES */
         .playstore-btn { display: flex; align-items: center; gap: 15px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); padding: 15px; border-radius: 12px; margin-top: 20px; transition: 0.2s; }
@@ -113,6 +150,9 @@
         .sc-glow { color: #34d399; text-shadow: 0 0 15px rgba(52, 211, 153, 0.3); }
         .cs-glow { color: #f472b6; text-shadow: 0 0 15px rgba(244, 114, 182, 0.3); }
 
+        .empty-state { text-align: center; padding: 50px 20px; color: var(--text-muted); }
+        .empty-icon { font-size: 3rem; margin-bottom: 20px; color: var(--border); }
+
         .mobile-toggle { display: none; position: fixed; top: 20px; right: 20px; background: rgba(0,0,0,0.8); border: 1px solid var(--border); color: white; padding: 10px; border-radius: 8px; z-index: 200; backdrop-filter: blur(5px); }
 
         @media (max-width: 768px) {
@@ -150,12 +190,18 @@
             <span class="submenu-link" onclick="showPage('cursores', this)"><i class="ph ph-cursor"></i> Cursores</span>
         </div>
         
+        <!-- ROBLOX APKS ATUALIZADO -->
         <button class="menu-btn" onclick="toggleSubmenu('menu-apk')">
             <div><i class="ph ph-game-controller"></i> Roblox APK's</div><i class="ph ph-caret-down"></i>
         </button>
         <div class="submenu" id="menu-apk">
-            <span class="submenu-link" onclick="showPage('downloads', this)">Downloads / FFlags</span>
+            <span class="submenu-link" onclick="showPage('roblox-especiais', this)"><i class="ph ph-star"></i> Roblox Especiais</span>
+            <span class="submenu-link" onclick="showPage('roblox-normais', this)"><i class="ph ph-cube"></i> Roblox Normais</span>
+            <span class="submenu-link" onclick="showPage('roblox-lites', this)"><i class="ph ph-feather"></i> Roblox Lites</span>
         </div>
+
+        <!-- NOVO BOTÃO CREDITS -->
+        <button class="menu-btn" onclick="showPage('credits', this)"><div><i class="ph ph-users"></i> Credits</div></button>
     </nav>
 
     <main class="main-content">
@@ -163,7 +209,7 @@
         <!-- === PÁGINA MAIN === -->
         <div id="main" class="page active">
             <div class="hero-banner">
-                <div class="hero-bg"></div><div class="hero-overlay"></div>
+                <!-- Overlay apenas --> <div class="hero-overlay"></div>
                 <div class="hero-text">
                     <div class="status-badge"><div class="pulse-dot"></div> ATUALIZANDO</div>
                     <h1>ROBLOX APK's<br><span class="highlight">FLEE THE FACILITY</span></h1>
@@ -246,7 +292,6 @@
                 <div style="margin-top: 40px;">
                     <h3 style="margin-bottom: 15px; border-left: 3px solid var(--secondary); padding-left: 10px; color: var(--text-main);">Exemplo de Configuração</h3>
                     <div class="img-frame">
-                        <!-- LINK RAW GITHUB -->
                         <img src="https://raw.githubusercontent.com/1D4vid/Site/main/unnamed.png" alt="Configuração Print" class="config-img">
                     </div>
                     <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 15px; font-style: italic; border-top: 1px solid var(--border); padding-top: 10px;">
@@ -293,70 +338,93 @@
             </div>
         </div>
 
-        <!-- === PÁGINA CURSORES (NOVA) === -->
+        <!-- === PÁGINA CURSORES === -->
         <div id="cursores" class="page">
             <div class="hero-banner" style="padding-bottom: 20px;">
                 <h1 style="font-size: 1.8rem;">CURSORES / <span class="highlight">CROSSHAIR</span></h1>
                 <p style="color: var(--text-muted);">Customização para PC e Mobile</p>
             </div>
-            
             <div class="content-container" style="padding-top: 20px;">
-                
                 <div class="main-info-box">
-                    <p class="main-info-text">
-                        Cursores para PC e mobile.<br>
-                        <span style="font-size: 0.85rem; color: var(--text-muted);">obs: também pode ser usado para mobile através de aplicativos.</span>
-                    </p>
+                    <p class="main-info-text">Cursores para PC e mobile.<br><span style="font-size: 0.85rem; color: var(--text-muted);">obs: também pode ser usado para mobile através de aplicativos.</span></p>
                 </div>
-
-                <!-- Seção Mobile -->
-                <h3 style="margin-bottom: 15px; color: var(--success); display: flex; align-items: center; gap: 8px;">
-                    <i class="ph ph-device-mobile"></i> MOBILE
-                </h3>
+                <h3 style="margin-bottom: 15px; color: var(--success); display: flex; align-items: center; gap: 8px;"><i class="ph ph-device-mobile"></i> MOBILE</h3>
                 <div class="main-info-box">
                     <div class="main-info-title">Como colocar no mobile?</div>
-                    <p class="main-info-text">
-                        Isso é muito simples, basta instalar o aplicativo abaixo, aceitar tudo que pedir (não há risco nenhum) e ir na parte "custom", depois é só colocar o cursor que deseja.
-                    </p>
-                    
-                    <a href="https://play.google.com/store/apps/details?id=me.okitastudio.crosshairherofps" target="_blank" class="playstore-btn">
-                        <i class="ph ph-google-play-logo" style="font-size: 2rem;"></i>
-                        <div><div style="font-size: 0.75rem; color: var(--text-muted);">BAIXAR APP</div><div style="font-size: 1.1rem; font-weight: 700; color: #fff;">Crosshair Hero</div></div>
-                    </a>
+                    <p class="main-info-text">Isso é muito simples, basta instalar o aplicativo abaixo, aceitar tudo que pedir (não há risco nenhum) e ir na parte "custom", depois é só colocar o cursor que deseja.</p>
+                    <a href="https://play.google.com/store/apps/details?id=me.okitastudio.crosshairherofps" target="_blank" class="playstore-btn"><i class="ph ph-google-play-logo" style="font-size: 2rem;"></i><div><div style="font-size: 0.75rem; color: var(--text-muted);">BAIXAR APP</div><div style="font-size: 1.1rem; font-weight: 700; color: #fff;">Crosshair Hero</div></div></a>
                 </div>
-
-                <!-- Seção PC -->
-                <h3 style="margin-bottom: 15px; margin-top: 40px; color: var(--primary); display: flex; align-items: center; gap: 8px;">
-                    <i class="ph ph-desktop"></i> PC
-                </h3>
+                <h3 style="margin-bottom: 15px; margin-top: 40px; color: var(--primary); display: flex; align-items: center; gap: 8px;"><i class="ph ph-desktop"></i> PC</h3>
                 <div class="main-info-box">
                     <div class="main-info-title">Tutorial para PC</div>
-                    <p class="main-info-text">
-                        1 - Vá até a pasta do roblox, e navegue até:
-                        <span class="path-box">...\content\textures\Cursors\KeyboardMouse</span>
-                        <br><br>
-                        2 - Nessa pasta, cole o arquivo e renomeie ela substituindo qual cursor você quiser.
-                        <br>
-                        <span style="font-size: 0.8rem; color: var(--text-muted);">(o nome do arquivo tem que ser igual ao que você substituiu).</span>
-                    </p>
+                    <p class="main-info-text">1 - Vá até a pasta do roblox, e navegue até:<span class="path-box">...\content\textures\Cursors\KeyboardMouse</span><br><br>2 - Nessa pasta, cole o arquivo e renomeie ela substituindo qual cursor você quiser.<br><span style="font-size: 0.8rem; color: var(--text-muted);">(o nome do arquivo tem que ser igual ao que você substituiu).</span></p>
                 </div>
-
-                <!-- Download Pack -->
                 <div style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px;">
-                    <div class="main-info-title"><i class="ph ph-download-simple"></i> Download do Pack</div>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">Pacote completo com vários cursores.</p>
-                    
-                    <a href="https://www.mediafire.com/file/viztnhqpagmj65a" target="_blank" class="mediafire-btn">
-                        <i class="ph ph-folder-notch-open" style="font-size: 1.3rem;"></i>
-                        BAIXAR PACK DE CURSORES
-                    </a>
+                    <div class="main-info-title"><i class="ph ph-download-simple"></i> Download do Pack</div><p style="color: var(--text-muted); font-size: 0.9rem;">Pacote completo com vários cursores.</p>
+                    <a href="https://www.mediafire.com/file/viztnhqpagmj65a" target="_blank" class="mediafire-btn"><i class="ph ph-folder-notch-open" style="font-size: 1.3rem;"></i> BAIXAR PACK DE CURSORES</a>
                 </div>
-
             </div>
         </div>
 
-        <!-- === PÁGINA DOWNLOADS === -->
-        <div id="downloads" class="page"><div class="content-container" style="padding-top:80px;"><h1>Downloads</h1></div></div>
+        <!-- === CATEGORIAS ROBLOX (NOVAS) === -->
+
+        <!-- ROBLOX ESPECIAIS (Antigo Downloads) -->
+        <div id="roblox-especiais" class="page">
+            <div class="content-container" style="padding-top: 50px;">
+                <h1 style="font-size: 1.8rem; margin-bottom: 10px;">Roblox <span class="highlight">Especiais</span></h1>
+                <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 0.9rem;">Versões modificadas com FFlags ativadas.</p>
+
+                <!-- 64 Bits -->
+                <div class="arch-folder" onclick="toggleFolder(this)">
+                    <div class="arch-header">
+                        <div class="arch-title"><i class="ph ph-cpu" style="color: var(--secondary);"></i> 64 Bits (Padrão)</div><i class="ph ph-caret-down arch-icon"></i>
+                    </div>
+                    <div class="arch-content">
+                        <div class="dl-item"><div class="dl-info"><b>Versão CC</b><span>Com Neblina / Com Skin</span></div><a href="#" class="dl-btn">Baixar</a></div>
+                        <div class="dl-item"><div class="dl-info"><b>Versão SS</b><span>Sem Neblina / Sem Skin</span></div><a href="#" class="dl-btn">Baixar</a></div>
+                        <div class="dl-item"><div class="dl-info"><b>Versão SC</b><span>Sem Neblina / Com Skin</span></div><a href="#" class="dl-btn">Baixar</a></div>
+                    </div>
+                </div>
+
+                <!-- 32 Bits -->
+                <div class="arch-folder" onclick="toggleFolder(this)">
+                    <div class="arch-header">
+                        <div class="arch-title"><i class="ph ph-battery-warning" style="color: var(--warning);"></i> 32 Bits (Lite)</div><i class="ph ph-caret-down arch-icon"></i>
+                    </div>
+                    <div class="arch-content">
+                        <div class="dl-item"><div class="dl-info"><b>Versão SS (Lite)</b><span>Sem Neblina / Sem Skin</span></div><a href="#" class="dl-btn">Baixar</a></div>
+                        <div class="dl-item"><div class="dl-info"><b>Versão SC</b><span>Sem Neblina / Com Skin</span></div><a href="#" class="dl-btn">Baixar</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROBLOX NORMAIS -->
+        <div id="roblox-normais" class="page">
+            <div class="content-container" style="padding-top: 80px;">
+                <h1 style="font-size: 1.8rem;">Roblox <span class="highlight">Normais</span></h1>
+                <div class="empty-state"><i class="ph ph-cube empty-icon"></i><p>Página em construção...</p></div>
+            </div>
+        </div>
+
+        <!-- ROBLOX LITES -->
+        <div id="roblox-lites" class="page">
+            <div class="content-container" style="padding-top: 80px;">
+                <h1 style="font-size: 1.8rem;">Roblox <span class="highlight">Lites</span></h1>
+                <div class="empty-state"><i class="ph ph-feather empty-icon"></i><p>Página em construção...</p></div>
+            </div>
+        </div>
+
+        <!-- PÁGINA CREDITS (NOVA) -->
+        <div id="credits" class="page">
+            <div class="content-container" style="padding-top: 80px;">
+                <h1 style="font-size: 1.8rem;">Créditos</h1>
+                <div class="main-info-box">
+                    <div class="main-info-title">Desenvolvimento</div>
+                    <p class="main-info-text">Site desenvolvido e mantido por <strong>1Drxker</strong>.</p>
+                </div>
+            </div>
+        </div>
 
     </main>
 
@@ -370,6 +438,7 @@
         }
         function toggleSubmenu(id) { document.getElementById(id).classList.toggle('open'); }
         function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); }
+        function toggleFolder(element) { element.classList.toggle('open'); }
     </script>
 </body>
 </html>

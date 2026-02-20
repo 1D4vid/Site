@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1Drxker - FTF Central</title>
-    <!-- Ícones -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <!-- Fonte -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 
     <style>
@@ -90,33 +88,41 @@
         .sc-glow { color: #34d399; text-shadow: 0 0 10px rgba(52, 211, 153, 0.3); }
         .cs-glow { color: #f472b6; text-shadow: 0 0 10px rgba(244, 114, 182, 0.3); }
 
-        /* --- CARDS DE VERSÃO (ROBLOX APK) --- */
+        /* --- CARDS DE VERSÃO (CORRIGIDO) --- */
         .version-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
         .version-card { background: rgba(20, 20, 22, 0.6); border: 1px solid var(--border); border-radius: 12px; padding: 20px; position: relative; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; }
         .version-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 5px 20px rgba(139, 92, 246, 0.1); background: rgba(20, 20, 22, 0.9); }
         
-        .v-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .v-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         
+        /* ICONE ROBLOX ARRUMADO */
         .v-icon { 
-            width: 45px; height: 45px; background: rgba(255,255,255,0.05); border-radius: 10px; 
+            width: 50px; height: 50px; /* Levemente maior */
+            background: rgba(255,255,255,0.08); 
+            border-radius: 12px; 
             display: flex; align-items: center; justify-content: center;
-            color: var(--text-main); 
+            color: white; 
         }
-        /* SVG DO ROBLOX */
-        .v-icon svg { width: 24px; height: 24px; fill: white; }
+        .v-icon svg { width: 30px; height: 30px; fill: white; } /* Tamanho interno do icone */
 
-        /* TAGS SUPER VISÍVEIS */
+        /* TAGS MAIS VISIVEIS */
         .v-tag { 
-            font-size: 0.9rem; font-weight: 800; padding: 5px 12px; border-radius: 6px; 
-            text-transform: uppercase; letter-spacing: 0.5px; color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            font-size: 1rem; /* Maior */
+            font-weight: 900; 
+            padding: 6px 14px; /* Mais gordinho */
+            border-radius: 6px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Sombra forte */
         }
-        .v-tag.sc { background: #10b981; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4); text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
-        .v-tag.ss { background: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+        
+        /* Cores Neon Sólidas */
+        .v-tag.sc { background: #10b981; text-shadow: 0 1px 3px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); }
+        .v-tag.ss { background: #3b82f6; text-shadow: 0 1px 3px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); }
 
-        .v-name { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
-        .v-sub { font-size: 0.8rem; color: var(--text-muted); }
-        .v-btn { width: 100%; background: linear-gradient(90deg, var(--mediafire), #0056b3); color: white; border: none; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s; }
+        .v-name { font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
+        .v-sub { font-size: 0.85rem; color: var(--text-muted); }
+        .v-btn { width: 100%; background: linear-gradient(90deg, var(--mediafire), #0056b3); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; cursor: pointer; margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s; }
         .v-btn:hover { filter: brightness(1.2); }
 
         /* UTILS */
@@ -129,17 +135,21 @@
         .discord-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background-color: var(--discord); color: white; padding: 15px; border-radius: 8px; font-weight: 700; margin-top: 20px; transition: 0.2s; border: 1px solid transparent; }
         .discord-btn:hover { background-color: #4752c4; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(88, 101, 242, 0.3); }
         .playstore-btn { display: flex; align-items: center; gap: 15px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); padding: 15px; border-radius: 12px; margin-top: 20px; transition: 0.2s; }
+        .playstore-btn:hover { border-color: var(--playstore); background: rgba(0, 161, 115, 0.1); }
         .playstore-btn i { color: var(--playstore); font-size: 2rem; }
         .mediafire-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--mediafire); color: white; padding: 15px; border-radius: 8px; font-weight: 700; margin-top: 20px; transition: 0.2s; }
+        .mediafire-btn:hover { background: #0056b3; transform: translateY(-2px); }
+        
+        .main-info-box { background: var(--bg-panel); border: 1px solid var(--border); padding: 20px; border-radius: 12px; margin-bottom: 30px; backdrop-filter: blur(5px); }
+        .main-info-title { color: var(--secondary); font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;}
+        .main-info-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+        
         .path-box { background: rgba(0,0,0,0.3); padding: 10px; border-radius: 6px; border: 1px solid var(--border); font-family: monospace; color: var(--secondary); margin: 10px 0; display: inline-block; word-break: break-all; }
         .filename-list { margin-top: 20px; display: grid; gap: 10px; }
         .file-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; border: 1px solid transparent; }
         .file-code { font-family: monospace; color: var(--text-main); font-weight: 700; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem; }
         .img-frame { width: 100%; max-width: 400px; margin: 0 auto; border-radius: 15px; overflow: hidden; border: 2px solid var(--border); background: #000; }
         .config-img { width: 100%; height: auto; display: block; opacity: 0.9; }
-        .main-info-box { background: var(--bg-panel); border: 1px solid var(--border); padding: 20px; border-radius: 12px; margin-bottom: 30px; backdrop-filter: blur(5px); }
-        .main-info-title { color: var(--secondary); font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;}
-        .main-info-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
         .report-list { list-style: none; margin-top: 15px; }
         .report-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: var(--text-muted); font-size: 0.9rem; }
         .support-tip { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; border: 1px solid var(--border); margin-top: 20px; }
@@ -241,7 +251,7 @@
             </div>
         </div>
 
-        <!-- === ROBLOX ESPECIAIS (COM LOGO DO ROBLOX) === -->
+        <!-- === ROBLOX ESPECIAIS (ÍCONE OFICIAL E TAGS GRANDES) === -->
         <div id="roblox-especiais" class="page">
             <div class="content-container" style="padding-top: 50px;">
                 <h1 style="font-size: 1.8rem; margin-bottom: 5px;">Roblox Especiais <span class="highlight">32 & 64 Bits</span></h1>

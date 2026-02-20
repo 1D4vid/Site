@@ -90,23 +90,25 @@
         .sc-glow { color: #34d399; text-shadow: 0 0 10px rgba(52, 211, 153, 0.3); }
         .cs-glow { color: #f472b6; text-shadow: 0 0 10px rgba(244, 114, 182, 0.3); }
 
-        /* --- CARDS DE VERSÃO (ÍCONE ARRUMADO) --- */
+        /* --- CARDS DE VERSÃO (COM IMAGEM PERSONALIZADA) --- */
         .version-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
         .version-card { background: rgba(20, 20, 22, 0.6); border: 1px solid var(--border); border-radius: 12px; padding: 20px; position: relative; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; }
         .version-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 5px 20px rgba(139, 92, 246, 0.1); background: rgba(20, 20, 22, 0.9); }
         
         .v-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
         
-        /* ICONE CUBE DO PHOSPHOR (SEM BUG) */
+        /* ICONE PERSONALIZADO */
         .v-icon { 
-            width: 48px; height: 48px; 
-            background: rgba(255,255,255,0.08); 
-            border-radius: 12px; 
+            width: 55px; height: 55px; 
             display: flex; align-items: center; justify-content: center;
-            color: white; 
+        }
+        .v-icon img {
+            width: 100%; height: 100%; 
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
         }
 
-        /* TAGS SÓLIDAS E GRANDES */
+        /* TAGS SÓLIDAS */
         .v-tag { 
             font-size: 1rem; font-weight: 900; 
             padding: 6px 14px; border-radius: 6px; 
@@ -247,7 +249,7 @@
             </div>
         </div>
 
-        <!-- === ROBLOX ESPECIAIS (ICONES FIXOS & TAGS GRANDES) === -->
+        <!-- === ROBLOX ESPECIAIS (COM ÍCONE PERSONALIZADO) === -->
         <div id="roblox-especiais" class="page">
             <div class="content-container" style="padding-top: 50px;">
                 <h1 style="font-size: 1.8rem; margin-bottom: 5px;">Roblox Especiais <span class="highlight">32 & 64 Bits</span></h1>
@@ -259,8 +261,9 @@
                     <div class="version-card">
                         <div>
                             <div class="v-header">
-                                <!-- ICONE CUBO SOLIDO (ROBLOX STYLE) - NAO BUGA -->
-                                <div class="v-icon"><i class="ph-fill ph-cube" style="font-size: 2rem;"></i></div>
+                                <div class="v-icon">
+                                    <img src="https://raw.githubusercontent.com/1D4vid/Site/main/Picsart_26-02-20_16-08-54-095.png" alt="Roblox">
+                                </div>
                                 <span class="v-tag sc">SC</span>
                             </div>
                             <div class="v-name">1Drxker Version</div>
@@ -273,7 +276,9 @@
                     <div class="version-card">
                         <div>
                             <div class="v-header">
-                                <div class="v-icon"><i class="ph-fill ph-cube" style="font-size: 2rem;"></i></div>
+                                <div class="v-icon">
+                                    <img src="https://raw.githubusercontent.com/1D4vid/Site/main/Picsart_26-02-20_16-08-54-095.png" alt="Roblox">
+                                </div>
                                 <span class="v-tag ss">SS</span>
                             </div>
                             <div class="v-name">Michawell Version</div>
@@ -286,7 +291,9 @@
                     <div class="version-card">
                         <div>
                             <div class="v-header">
-                                <div class="v-icon"><i class="ph-fill ph-cube" style="font-size: 2rem;"></i></div>
+                                <div class="v-icon">
+                                    <img src="https://raw.githubusercontent.com/1D4vid/Site/main/Picsart_26-02-20_16-08-54-095.png" alt="Roblox">
+                                </div>
                                 <span class="v-tag ss">SS</span>
                             </div>
                             <div class="v-name">FKPS Version</div>
@@ -299,7 +306,9 @@
                     <div class="version-card">
                         <div>
                             <div class="v-header">
-                                <div class="v-icon"><i class="ph-fill ph-cube" style="font-size: 2rem;"></i></div>
+                                <div class="v-icon">
+                                    <img src="https://raw.githubusercontent.com/1D4vid/Site/main/Picsart_26-02-20_16-08-54-095.png" alt="Roblox">
+                                </div>
                                 <span class="v-tag sc">SC</span>
                             </div>
                             <div class="v-name">FKPS Version</div>
@@ -312,7 +321,9 @@
                     <div class="version-card">
                         <div>
                             <div class="v-header">
-                                <div class="v-icon"><i class="ph-fill ph-cube" style="font-size: 2rem;"></i></div>
+                                <div class="v-icon">
+                                    <img src="https://raw.githubusercontent.com/1D4vid/Site/main/Picsart_26-02-20_16-08-54-095.png" alt="Roblox">
+                                </div>
                                 <span class="v-tag sc">SC</span>
                             </div>
                             <div class="v-name">Tio Morcego Version</div>
@@ -325,7 +336,9 @@
                     <div class="version-card">
                         <div>
                             <div class="v-header">
-                                <div class="v-icon"><i class="ph-fill ph-cube" style="font-size: 2rem;"></i></div>
+                                <div class="v-icon">
+                                    <img src="https://raw.githubusercontent.com/1D4vid/Site/main/Picsart_26-02-20_16-08-54-095.png" alt="Roblox">
+                                </div>
                                 <span class="v-tag sc">SC</span>
                             </div>
                             <div class="v-name">Facility Gamer Version</div>
@@ -338,7 +351,9 @@
                     <div class="version-card">
                         <div>
                             <div class="v-header">
-                                <div class="v-icon"><i class="ph-fill ph-cube" style="font-size: 2rem;"></i></div>
+                                <div class="v-icon">
+                                    <img src="https://raw.githubusercontent.com/1D4vid/Site/main/Picsart_26-02-20_16-08-54-095.png" alt="Roblox">
+                                </div>
                                 <span class="v-tag sc">SC</span>
                             </div>
                             <div class="v-name">SnakeFq Version</div>

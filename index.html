@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1Drxker - FTF Central</title>
+    <!-- Ícones -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Fonte -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 
     <style>
@@ -88,37 +90,31 @@
         .sc-glow { color: #34d399; text-shadow: 0 0 10px rgba(52, 211, 153, 0.3); }
         .cs-glow { color: #f472b6; text-shadow: 0 0 10px rgba(244, 114, 182, 0.3); }
 
-        /* --- CARDS DE VERSÃO (CORRIGIDO) --- */
+        /* --- CARDS DE VERSÃO (ÍCONE ARRUMADO) --- */
         .version-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
         .version-card { background: rgba(20, 20, 22, 0.6); border: 1px solid var(--border); border-radius: 12px; padding: 20px; position: relative; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; }
         .version-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 5px 20px rgba(139, 92, 246, 0.1); background: rgba(20, 20, 22, 0.9); }
         
-        .v-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .v-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
         
-        /* ICONE ROBLOX ARRUMADO */
+        /* ICONE CUBE DO PHOSPHOR (SEM BUG) */
         .v-icon { 
-            width: 50px; height: 50px; /* Levemente maior */
+            width: 48px; height: 48px; 
             background: rgba(255,255,255,0.08); 
             border-radius: 12px; 
             display: flex; align-items: center; justify-content: center;
             color: white; 
         }
-        .v-icon svg { width: 30px; height: 30px; fill: white; } /* Tamanho interno do icone */
 
-        /* TAGS MAIS VISIVEIS */
+        /* TAGS SÓLIDAS E GRANDES */
         .v-tag { 
-            font-size: 1rem; /* Maior */
-            font-weight: 900; 
-            padding: 6px 14px; /* Mais gordinho */
-            border-radius: 6px; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; color: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Sombra forte */
+            font-size: 1rem; font-weight: 900; 
+            padding: 6px 14px; border-radius: 6px; 
+            text-transform: uppercase; letter-spacing: 1px; color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
         }
-        
-        /* Cores Neon Sólidas */
-        .v-tag.sc { background: #10b981; text-shadow: 0 1px 3px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); }
-        .v-tag.ss { background: #3b82f6; text-shadow: 0 1px 3px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); }
+        .v-tag.sc { background: #10b981; border: 1px solid rgba(255,255,255,0.2); text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+        .v-tag.ss { background: #3b82f6; border: 1px solid rgba(255,255,255,0.2); text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
 
         .v-name { font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
         .v-sub { font-size: 0.85rem; color: var(--text-muted); }
@@ -251,7 +247,7 @@
             </div>
         </div>
 
-        <!-- === ROBLOX ESPECIAIS (ÍCONE OFICIAL E TAGS GRANDES) === -->
+        <!-- === ROBLOX ESPECIAIS (ICONES FIXOS & TAGS GRANDES) === -->
         <div id="roblox-especiais" class="page">
             <div class="content-container" style="padding-top: 50px;">
                 <h1 style="font-size: 1.8rem; margin-bottom: 5px;">Roblox Especiais <span class="highlight">32 & 64 Bits</span></h1>
@@ -263,9 +259,8 @@
                     <div class="version-card">
                         <div>
                             <div class="v-header">
-                                <div class="v-icon">
-                                    <svg viewBox="0 0 24 24"><path d="M5.443 2.977l15.58 4.175-4.175 15.58L1.268 18.557 5.443 2.977zm10.76 8.368a2.506 2.506 0 10-2.506 2.506 2.506 2.506 0 002.506-2.506z"/></svg>
-                                </div>
+                                <!-- ICONE CUBO SOLIDO (ROBLOX STYLE) - NAO BUGA -->
+                                <div class="v-icon"><i class="ph-fill ph-cube" style="font-size: 2rem;"></i></div>
                                 <span class="v-tag sc">SC</span>
                             </div>
                             <div class="v-name">1Drxker Version</div>
@@ -278,9 +273,7 @@
                     <div class="version-card">
                         <div>
                             <div class="v-header">
-                                <div class="v-icon">
-                                    <svg viewBox="0 0 24 24"><path d="M5.443 2.977l15.58 4.175-4.175 15.58L1.268 18.557 5.443 2.977zm10.76 8.368a2.506 2.506 0 10-2.506 2.506 2.506 2.506 0 002.506-2.506z"/></svg>
-                                </div>
+                                <div class="v-icon"><i class="ph-fill ph-cube" style="font-size: 2rem;"></i></div>
                                 <span class="v-tag ss">SS</span>
                             </div>
                             <div class="v-name">Michawell Version</div>
@@ -293,9 +286,7 @@
                     <div class="version-card">
                         <div>
                             <div class="v-header">
-                                <div class="v-icon">
-                                    <svg viewBox="0 0 24 24"><path d="M5.443 2.977l15.58 4.175-4.175 15.58L1.268 18.557 5.443 2.977zm10.76 8.368a2.506 2.506 0 10-2.506 2.506 2.506 2.506 0 002.506-2.506z"/></svg>
-                                </div>
+                                <div class="v-icon"><i class="ph-fill ph-cube" style="font-size: 2rem;"></i></div>
                                 <span class="v-tag ss">SS</span>
                             </div>
                             <div class="v-name">FKPS Version</div>
@@ -308,9 +299,7 @@
                     <div class="version-card">
                         <div>
                             <div class="v-header">
-                                <div class="v-icon">
-                                    <svg viewBox="0 0 24 24"><path d="M5.443 2.977l15.58 4.175-4.175 15.58L1.268 18.557 5.443 2.977zm10.76 8.368a2.506 2.506 0 10-2.506 2.506 2.506 2.506 0 002.506-2.506z"/></svg>
-                                </div>
+                                <div class="v-icon"><i class="ph-fill ph-cube" style="font-size: 2rem;"></i></div>
                                 <span class="v-tag sc">SC</span>
                             </div>
                             <div class="v-name">FKPS Version</div>
@@ -323,9 +312,7 @@
                     <div class="version-card">
                         <div>
                             <div class="v-header">
-                                <div class="v-icon">
-                                    <svg viewBox="0 0 24 24"><path d="M5.443 2.977l15.58 4.175-4.175 15.58L1.268 18.557 5.443 2.977zm10.76 8.368a2.506 2.506 0 10-2.506 2.506 2.506 2.506 0 002.506-2.506z"/></svg>
-                                </div>
+                                <div class="v-icon"><i class="ph-fill ph-cube" style="font-size: 2rem;"></i></div>
                                 <span class="v-tag sc">SC</span>
                             </div>
                             <div class="v-name">Tio Morcego Version</div>
@@ -338,9 +325,7 @@
                     <div class="version-card">
                         <div>
                             <div class="v-header">
-                                <div class="v-icon">
-                                    <svg viewBox="0 0 24 24"><path d="M5.443 2.977l15.58 4.175-4.175 15.58L1.268 18.557 5.443 2.977zm10.76 8.368a2.506 2.506 0 10-2.506 2.506 2.506 2.506 0 002.506-2.506z"/></svg>
-                                </div>
+                                <div class="v-icon"><i class="ph-fill ph-cube" style="font-size: 2rem;"></i></div>
                                 <span class="v-tag sc">SC</span>
                             </div>
                             <div class="v-name">Facility Gamer Version</div>
@@ -353,9 +338,7 @@
                     <div class="version-card">
                         <div>
                             <div class="v-header">
-                                <div class="v-icon">
-                                    <svg viewBox="0 0 24 24"><path d="M5.443 2.977l15.58 4.175-4.175 15.58L1.268 18.557 5.443 2.977zm10.76 8.368a2.506 2.506 0 10-2.506 2.506 2.506 2.506 0 002.506-2.506z"/></svg>
-                                </div>
+                                <div class="v-icon"><i class="ph-fill ph-cube" style="font-size: 2rem;"></i></div>
                                 <span class="v-tag sc">SC</span>
                             </div>
                             <div class="v-name">SnakeFq Version</div>
